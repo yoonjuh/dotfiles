@@ -9,12 +9,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
-Plug 'vim-ruby/vim-ruby'
 Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
 Plug 'prettier/vim-prettier'
 Plug 'w0rp/ale'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'cohama/lexima.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'SirVer/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
@@ -26,18 +24,15 @@ Plug 'matze/vim-move'
 Plug 'Valloric/YouCompleteMe'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'scrooloose/syntastic'
-
-" Plug 'pangloss/vim-javascript'
-" Plug 'othree/yajs.vim'
-" Plug 'othree/es.next.syntax.vim'
-" Plug 'othree/javascript-libraries-syntax.vim'
-" Plug 'isRuslan/vim-es6'
-
+Plug 'sbdchd/neoformat'
+Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
 Plug 'mxw/vim-jsx', { 'for': ['jsx','javascript.jsx']}
 Plug 'tomtom/tcomment_vim'
 Plug 'ervandew/supertab'
 Plug 'othree/html5.vim'
+Plug 'ap/vim-css-color'
+Plug 'kien/ctrlp.vim'
 
 " Colour Themes
 Plug 'GertjanReynaert/cobalt2-vim-theme'
@@ -46,6 +41,10 @@ Plug 'chriskempson/base16-vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'liuchengxu/space-vim-dark'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'dracula/vim',{'as': 'dracula'}
+Plug 'sheerun/vim-polyglot'
+Plug 'trevordmiller/nova-vim'
 
  " Test Run
 Plug 'tpope/vim-obsession'
@@ -60,59 +59,14 @@ runtime macros/matchit.vim
 " =============================================================
 "                      APPEARENCE
 " =============================================================
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-
-if (has("autocmd"))
-  augroup colorextend
-    autocmd!
-    " Make `Function`s bold in GUI mode
-    autocmd ColorScheme * call onedark#extend_highlight("Function", { "gui": "bold" })
-    " Override the `Statement` foreground color in 256-color mode
-    autocmd ColorScheme * call onedark#extend_highlight("Statement", { "fg": { "cterm": 128 } })
-    " Override the `Identifier` background color in GUI mode
-    autocmd ColorScheme * call onedark#extend_highlight("Identifier", { "bg": { "gui": "#333333" } })
-  augroup END
-endif
-
-if (has("autocmd") && !has("gui_running"))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
-  augroup END
-endif
-
-let g:onedark_color_overrides = {
-\ "black": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
-\ "purple": { "gui": "#C678DF", "cterm": "170", "cterm16": "5" }
-\}
-
-if has("gui_running")
-  set guifont=Operator\ Mono:h14
-  set linespace=2
-  set guioptions-=r
-endif
 
 set term=xterm
 set t_Co=256
 set termguicolors
 " let &t_AB="\e[48;5;%dm"
 " let &t_AF="\e[38;5;%dm"
-colo onedark
-"colo seoul256
-"colo space-vim-dark
-"colorscheme cobalt2
-"colorscheme monokai
-"colorscheme base16-tomorrow-night
-" set background=dark
+colo nova
+set background=dark
 
 
 "
@@ -129,8 +83,8 @@ set showmatch
 set nowrap
 set autoread
 set autowrite
-set backupdir=~/.tmp
-set directory=~/.tmp
+" set backupdir=~/.tmp
+" set directory=~/.tmp
 set viminfo+=!
 set guioptions-=T
 set laststatus=2
@@ -171,10 +125,7 @@ set re=1
 
 set path+=**
 set tags=./tags;/
-"
-" hi Pmenu ctermfg=white ctermbg=blue
-" hi CursorLineNr ctermfg=darkgrey ctermbg=blue
-" hi LineNr ctermfg=grey ctermbg=darkblue
+
 " " =============================================================
 " "                    AUTOCOMMANDS
 " " =============================================================
@@ -203,6 +154,7 @@ endif
 " =============================================================
 "                      MAPPINGS
 " =============================================================
+
 
 let mapleader = ","
 
@@ -266,10 +218,36 @@ vnoremap Y myY`y
 "                 PLUGINS CONFIGURATION
 " =============================================================
 
+let g:neoformat_try_formatprg=1
+augroup NeoformatAutoFormat
+  autocmd!
+  autocmd FileType javascript,javascript.jsx  setlocal formatprg=prettier\
+                                          \--stdin\
+                                          \--print-width\ 80\
+                                          \--single-quote\
+                                          \--trailing-comma\ es6
+  autocmd BufWritePre *.js Neoformat
+augroup END
+
+"Auto pair
+"let g:autoPairsFlyMode
+
+"CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\.git$\|\.yardoc\|node_modules\|\log\|tmp$',
+      \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+      \ }
+
 " NERDTree
 nnoremap <leader>q :NERDTreeToggle<cr>
-let NERDTreeMinimalUI=1
-let NERDTreeShowLineNumbers=1
+let g:NERDTreeDirArrows=0
+let g:NERDTreeWinSize=20
+let NERDTreeShowHidden=1
+
+"Syntastic
+let g:syntastic_javascript_checkers = ['eslint']
 
 "YCM/UltiSnips/SuperTab
 let g:ycm_key_list_select_completion = [ '<C-n>', '<Down>' ]
@@ -287,6 +265,15 @@ vmap s <Plug>(easymotion-bd-t)
 " Vim Move
 let g:move_key_modifier = 'C'
 
+"Async engine settings
+"
+" Ale let g:ale_set_highlights = 1
+let g:ale_fixers = {
+      \ 'javascript': ['prettier', 'eslint']
+      \}
+
+let g:ale_fix_on_save=1
+let g:ale_completion_enabled=1
 
 " Markdown
 let g:markdown_fenced_languages = ['css', 'py=python', 'javascript', 'js=javascript', 'json=javascript',  'sass', 'xml']
@@ -300,29 +287,7 @@ let g:used_javascript_libs = 'underscore,react'
 let g:user_emmet_settings={'javascript.jsx': {'extends':'jsx'}}
 let g:user_emmet_leader_key='<C-t>'
 
-" Layout switcher
-let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
-let g:XkbSwitchEnabled = 1
 
-" Prettier
-nmap <Leader>p <Plug>(Prettier)
-let g:prettier#exec_cmd_async = 1
-let g:prettier#config#print_width = 80
-let g:prettier#config#tab_width = 2
-let g:prettier#config#use_tabs = 'false'
-let g:prettier#config#semi = 'true'
-let g:prettier#config#single_quote = 'false'
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#jsx_bracket_same_line = 'false'
-let g:prettier#config#trailing_comma = 'none'
-let g:prettier#config#parser = 'flow'
-let g:prettier#config#config_precedence = 'prefer-file'
-let g:prettier#config#prose_wrap = 'preserve'
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
-
-" Ale
-let g:ale_set_highlights = 0
 nmap <silent> <Leader>au <Plug>(ale_previous_wrap)
 nmap <silent> <Leader>ae <Plug>(ale_next_wrap)
 let g:ale_linters = {
