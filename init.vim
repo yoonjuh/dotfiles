@@ -20,9 +20,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
-Plug 'mattn/emmet-vim'
-
-" Themes
+Plug 'mattn/emmet-vim' " Themes
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'kiddos/malokai.vim'
@@ -66,8 +64,6 @@ set encoding=UTF-8
 "Set bold serarch result
 set hlsearch
 
-"Whenever I press <space>, search results go way
-nnoremap <silent> <space> :nohl<Bar>:echo<CR>
 
 "Smotth horizontal scroll
 set sidescroll=1
@@ -80,11 +76,14 @@ xnoremap J :m '>+2<CR>gv=gv
 vnoremap y myy`y
 vnoremap Y myY`y
 
-" create/open file in current folder
-map <Leader>ee :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
-
 " trigger key for every fancy things 
 let mapleader=","
+
+"Whenever I press <space>, search results go way
+nnoremap <silent> <space> :nohl<Bar>:echo<CR>
+
+" Create file on current directory
+map <Leader>ee :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 
 
 "================================================================
@@ -166,6 +165,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+
 
 
 " VIM-EMMET 

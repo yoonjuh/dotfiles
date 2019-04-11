@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/edwin/.oh-my-zsh"
+export ZSH="/home/edwin/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -62,12 +62,13 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+# Plugins
 plugins=(
   git
   colored-man-pages
   zsh-syntax-highlighting
   zsh-autosuggestions
-  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -96,23 +97,33 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+
+# System settings
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
+export LC_ALL=en_US.UTF-8
 export OOO_FORCE_DESKTOP="gnome"
+
+#NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export PATH="/home/Edwin/anaconda3/bin:$PATH"
-export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""' 
 
+# FZF settings 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 export FZF_DEFAULT_OPS="--extended"
-alias v="nvim"
+export FZF_DEFAULT_COMMAND='fd --follow --exclude "node_modules"' 
 
+#Aliases 
+alias v="nvim"
+ alias zshc="nvim ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias reload="source ~/.zshrc"
+alias settings="nvim ~/.config/nvim/init.vim"
+
+source /usr/share/nvm/init-nvm.sh
