@@ -1,35 +1,23 @@
-### Personal settings
+## Neovim settings for Frontend Development
 
-<p>
-  Most of settings are stolen from others' setting.
-  This settings are working at this point, but need to be improved,
-</p>
+#### Installation(Linux Or Mac)
+- [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) 
+- [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+- [vim-plug](https://github.com/junegunn/vim-plug) 
+- [Tmux](https://github.com/tmux/tmux)
+- clone this repo, place the files where it should be.
+  - init.vim => ~/.config/nvim
+  - .tmux.conf => ~/
+  - my-snippets => ~/.config/nvim/my-snippets
+  - .zshrc => ~/
 
-<li>Installation</li>
-<p>
-  To make this work, you need to install
-  [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-  [vim-plug](https://github.com/junegunn/vim-plug)
-  [Tmux](https://github.com/tmux/tmux)
-</p>
+#### plugin requirements
+ ##### fzf: 
+ - I needed to install the package call [fd](https://github.com/sharkdp/fd) manually
+ - check my .zshrc, for the fzf env variables 
 
-<p>
-  For the [ale](https://github.com/w0rp/ale)
-  you need to compile it once,
-  There will be instructions when you follow the link.
+ ##### ale:
+ - To make this faster, I needed to install [Fast Fold](https://github.com/Konfekt/FastFold) under ~/.config/nvim/plugged
+ - ale will work properly if  your project has settings for `eslint` or `eslint` with `prettier`
+ 
 
-Also, for zsh, you need to install those zsh plugins.
-[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-this repo has everything!!
-
-</p>
-
-<p>
-  Trying to customise settings for Javascript Development
-</p>
-
-<p>
-  Thanks to other good developers,
-  now this is at least workable.
-  I am not claiming this as my work and if there is problem, will delete this rightaway
-</p>
