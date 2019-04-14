@@ -4,31 +4,40 @@
 
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+"Syntax
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
 Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
-Plug 'joshdick/onedark.vim'
-Plug 'ajh17/spacegray.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/html5.vim'
+
+"Utils
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
-Plug 'mattn/emmet-vim' " Themes
+Plug 'mattn/emmet-vim' 
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'vim-airline/vim-airline'
+Plug 'SirVer/ultisnips'
+
+" Themes
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'kiddos/malokai.vim'
-Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Wombat'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'ajh17/spacegray.vim'
 
 call plug#end()
 
@@ -85,6 +94,8 @@ nnoremap <silent> <space> :nohl<Bar>:echo<CR>
 " Create file on current directory
 map <Leader>ee :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 
+"Save alias
+nnoremap <leader>s :w<cr>
 
 "================================================================
 "=====                   theme settings                     =====
@@ -108,10 +119,6 @@ colorscheme onedark
 "=====               PLUGIN-SETTINGS                         =====
 "=================================================================
 
-
-"Fzf 
-set rtp+=~/.fzf
-
 "NERDTree 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -131,13 +138,17 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlit
 
 nnoremap <leader>q :NERDTreeToggle<CR>
 
+
+"Fzf 
+set rtp+=~/.fzf
+
+
 " FZF 
 nnoremap <leader>f :GFiles<cr>
 nnoremap <leader>F :Files<cr>
 nnoremap <leader>. :Buffers<cr>
 nnoremap <leader>l :BLines<cr>
 nnoremap <leader>L :Lines<cr>
-nnoremap <leader>c :Colors<cr>
 
 " DEOPLETE <TAB>: completion. 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -166,7 +177,12 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
+"UltiSnips
 
+set runtimepath+=~/.config/nvim/my-snippets/
+nmap <leader>ue :UltiSnipsEdit<cr>
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 
 " VIM-EMMET 
