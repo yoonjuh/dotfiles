@@ -1,0 +1,19 @@
+  {
+    "sync.gist": "2d7fcd0a3a6979f4587f82f34a385d0f",
+    "workbench.colorTheme": "One Dark Pro",
+    "terminal.integrated.fontSize": 17,
+    "editor.fontFamily": "'Fira Code', 'IBM Plex Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 18,
+    "debug.console.fontSize": 18,
+    "markdown.preview.fontSize": 18,
+    "workbench.tree.indent": 16,
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.settings.useSplitJSON": true,
+    "window.zoomLevel": 1,
+    "workbench.iconTheme": "vscode-icons",
+    "prettier.eslintIntegration": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "editor.tabSize": 2
+  }
+
