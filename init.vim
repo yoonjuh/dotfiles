@@ -37,6 +37,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'junegunn/goyo.vim'
 Plug 'lilydjwg/colorizer'
 Plug 'luochen1990/rainbow'
+Plug 'terryma/vim-smooth-scroll'
 "Plug 'SirVer/ultisnips'
 
 " Themes
@@ -115,7 +116,7 @@ nnoremap <leader>s :w<cr>
 map <leader>b :Goyo \| set linebreak<CR>
 
 "Spell Check
-map <leader>ss :set spell!<CR>
+"map <leader>ss :set spell!<CR>
 
 "================================================================
 "=====                   theme settings                     =====
@@ -223,5 +224,11 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " vim-rainbow: colorize the parentheses
 let g:rainbow_active = 1
 
+
+" vim-smooth-scroll setup
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
 
 
