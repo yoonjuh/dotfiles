@@ -11,7 +11,6 @@ Plug 'mxw/vim-jsx'
 Plug 'scrooloose/syntastic'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
-Plug 'lilydjwg/colorizer'
 
 "???"""""""Typescript
 "Plug 'HerringtonDarkholme/yats.vim'
@@ -36,6 +35,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/goyo.vim'
+Plug 'lilydjwg/colorizer'
+Plug 'luochen1990/rainbow'
 "Plug 'SirVer/ultisnips'
 
 " Themes
@@ -119,6 +120,7 @@ map <leader>ss :set spell!<CR>
 "================================================================
 "=====                   theme settings                     =====
 "================================================================
+
 
 "gruvbox 
 set termguicolors
@@ -217,6 +219,9 @@ let g:user_emmet_leader_key='<C-Z>' " so the trigger will be <C-Z>,
 
 " DEOPLETE <TAB>: completion. 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" vim-rainbow: colorize the parentheses
+let g:rainbow_active = 1
 
 
 
