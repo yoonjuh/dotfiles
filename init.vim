@@ -112,6 +112,8 @@ nnoremap <leader>s :w<cr>
 " Goyo setup
 map <leader>b :Goyo \| set linebreak<CR>
 
+"Spell Check
+map <leader>ss :set spell!<CR>
 
 "================================================================
 "=====                   theme settings                     =====
