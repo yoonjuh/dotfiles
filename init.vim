@@ -2,7 +2,6 @@
 "=====                       PLUGINS                        =====
 "================================================================
 
-
 call plug#begin('~/.config/nvim/plugged')
 
 "Syntax
@@ -12,6 +11,15 @@ Plug 'mxw/vim-jsx'
 Plug 'scrooloose/syntastic'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
+
+"???"""""""Typescript
+"Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+"
+"For async completion
+Plug 'Shougo/deoplete.nvim'
+"For Denite features
+Plug 'Shougo/denite.nvim'
 
 "Utils
 Plug 'scrooloose/nerdtree'
@@ -26,7 +34,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'vim-airline/vim-airline'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 
 " Themes
 Plug 'morhetz/gruvbox'
@@ -53,6 +61,9 @@ syntax on
 " Hybrid line numbers
 set number relativenumber
 set nu rnu
+
+" Settings for split behaviors
+set splitbelow splitright
 
 "Default indent size
 set tabstop=2
@@ -150,10 +161,6 @@ nnoremap <leader>. :Buffers<cr>
 nnoremap <leader>l :BLines<cr>
 nnoremap <leader>L :Lines<cr>
 
-" DEOPLETE <TAB>: completion. 
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-
 "Ale eslint config 
 let g:ale_fixers = {
  \ 'javascript': ['eslint']
@@ -181,8 +188,8 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 set runtimepath+=~/.config/nvim/my-snippets/
 nmap <leader>ue :UltiSnipsEdit<cr>
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 
 " VIM-EMMET 
@@ -198,4 +205,10 @@ let g:user_emmet_settings = {
 
 "Key mapping
 let g:user_emmet_leader_key='<C-Z>' " so the trigger will be <C-Z>,
+
+
+" DEOPLETE <TAB>: completion. 
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+
 
