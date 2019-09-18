@@ -34,6 +34,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'vim-airline/vim-airline'
+Plug 'junegunn/goyo.vim'
 "Plug 'SirVer/ultisnips'
 
 " Themes
@@ -107,6 +108,10 @@ map <Leader>ee :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 
 "Save alias
 nnoremap <leader>s :w<cr>
+
+" Goyo setup
+map <leader>b :Goyo \| set linebreak<CR>
+
 
 "================================================================
 "=====                   theme settings                     =====
