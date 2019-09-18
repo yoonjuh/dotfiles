@@ -11,6 +11,7 @@ Plug 'mxw/vim-jsx'
 Plug 'scrooloose/syntastic'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
+Plug 'lilydjwg/colorizer'
 
 "???"""""""Typescript
 "Plug 'HerringtonDarkholme/yats.vim'
