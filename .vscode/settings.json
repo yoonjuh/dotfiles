@@ -1,19 +1,92 @@
-  {
-    "sync.gist": "2d7fcd0a3a6979f4587f82f34a385d0f",
-    "workbench.colorTheme": "One Dark Pro",
+{
+    "workbench.colorTheme": "Atom One Dark",
     "terminal.integrated.fontSize": 17,
-    "editor.fontFamily": "'Fira Code', 'IBM Plex Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 18,
-    "debug.console.fontSize": 18,
+    "editor.fontFamily": " 'Cascadia Code', 'Dank Mono', 'Monaco','IBM Plex Mono', 'Fira Code', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 19,
+    "debug.console.fontSize": 19,
     "markdown.preview.fontSize": 18,
     "workbench.tree.indent": 16,
     "workbench.view.alwaysShowHeaderActions": true,
     "workbench.settings.useSplitJSON": true,
-    "window.zoomLevel": 1,
-    "workbench.iconTheme": "vscode-icons",
+    "window.zoomLevel": -0.5,
+    "editor.formatOnSave": false,
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2,
+    },
+    "[typescript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2,
+    },
+    "[c]": {
+      "editor.tabSize": 4,
+      "editor.formatOnSave": true
+    },
+    "editor.tabSize": 4,
+    "workbench.iconTheme": "material-icon-theme",
     "prettier.eslintIntegration": true,
-    "eslint.autoFixOnSave": true,
+    "prettier.tslintIntegration": true,
     "eslint.alwaysShowStatus": true,
-    "editor.tabSize": 2
+    "liveServer.settings.donotShowInfoMsg": true,
+    "C_Cpp.updateChannel": "Insiders",
+    "vsicons.dontShowNewVersionMessage": true,
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+    },
+    "peacock.favoriteColors": [
+      {
+        "name": "Angular Red",
+        "value": "#b52e31"
+      },
+      {
+        "name": "Auth0 Orange",
+        "value": "#eb5424"
+      },
+      {
+        "name": "Azure Blue",
+        "value": "#007fff"
+      },
+      {
+        "name": "C# Purple",
+        "value": "#68217A"
+      },
+      {
+        "name": "Gatsby Purple",
+        "value": "#639"
+      },
+      {
+        "name": "Go Cyan",
+        "value": "#5dc9e2"
+      },
+      {
+        "name": "Java Blue-Gray",
+        "value": "#557c9b"
+      },
+      {
+        "name": "JavaScript Yellow",
+        "value": "#f9e64f"
+      },
+      {
+        "name": "Mandalorian Blue",
+        "value": "#1857a4"
+      },
+      {
+        "name": "Node Green",
+        "value": "#215732"
+      },
+      {
+        "name": "React Blue",
+        "value": "#00b3e6"
+      },
+      {
+        "name": "Something Different",
+        "value": "#832561"
+      },
+      {
+        "name": "Vue Green",
+        "value": "#42b883"
+      }
+    ]
   }
-

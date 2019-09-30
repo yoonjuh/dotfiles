@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/edwin/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -98,6 +98,19 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# zsh; needs setopt re_match_pcre. You can, of course, adapt it to your own shell easily.
+tmuxkillf () {
+    local sessions
+    sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
+    local i
+    for i in "${(f@)sessions}"
+    do
+        [[ $i =~ '([^:]*):.*' ]] && {
+            echo "Killing $match[1]"
+            tmux kill-session -t "$match[1]"
+        }
+    done
+  }
 
 
 # System settings
@@ -107,12 +120,20 @@ export QT_IM_MODULE=fcitx
 export LC_ALL=en_US.UTF-8
 export OOO_FORCE_DESKTOP="gnome"
 
-#NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$HOME/last_semester/DB/instantclient_12_2:$PATH
 
-export PATH="/home/Edwin/anaconda3/bin:$PATH"
+# prevent weird error(maximum function call stuff)
+zstyle ':vcs_info:*' enable git hg
+
+#NVM
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 # FZF settings 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -121,9 +142,17 @@ export FZF_DEFAULT_COMMAND='fd --follow --exclude "node_modules"'
 
 #Aliases 
 alias v="nvim"
- alias zshc="nvim ~/.zshrc"
+alias zshc="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias reload="source ~/.zshrc"
 alias settings="nvim ~/.config/nvim/init.vim"
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias ys="yarn start"
+alias yis="yarn && yarn start"
+alias yt="yarn test"
+alias gs="git status"
+alias gd="git diff"
+alias ng4="npx @angular/cli@1.4.10"
 
-source /usr/share/nvm/init-nvm.sh
+
+#source /usr/share/nvm/init-nvm.sh
