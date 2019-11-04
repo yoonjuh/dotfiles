@@ -8,7 +8,48 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+
+# Look in ~/.oh-my-zsh/themes/
+ZSH_THEME=""
+
+# TMUX
+# Automatically start tmux
+ZSH_TMUX_AUTOSTART=true
+
+# Automatically connect to a previous session if it exists
+ZSH_TMUX_AUTOCONNECT=true
+
+# Enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git node brew tmux)
+
+# User configuration
+# Hide user@hostname if it's expected default user
+#DEFAULT_USER="ctay20"
+#prompt_context(){}
+
+# Setting rg as the default source for fzf
+export FZF_DEFAULT_COMMAND='rg --files'
+
+# Apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Set location of z installation
+. /usr/local/etc/profile.d/z.sh
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -66,6 +107,9 @@ ZSH_THEME="robbyrussell"
 # Plugins
 plugins=(
   git
+  node
+  tmux
+  brew
   colored-man-pages
   zsh-syntax-highlighting
   zsh-autosuggestions
@@ -122,14 +166,12 @@ export OOO_FORCE_DESKTOP="gnome"
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$HOME/last_semester/DB/instantclient_12_2:$PATH
+export EDITOR='nvim'
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 # prevent weird error(maximum function call stuff)
 zstyle ':vcs_info:*' enable git hg
-
-#NVM
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -152,7 +194,14 @@ alias yis="yarn && yarn start"
 alias yt="yarn test"
 alias gs="git status"
 alias gd="git diff"
-alias ng4="npx @angular/cli@1.4.10"
+alias ls="colorls -lA --sd"
 
 
+
+# Set spaceship as prompt
+autoload -U promptinit; promptinit
+prompt spaceship
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_NODE_SHOW=false
+SPACESHIP_GIT_STATUS_STASHED=''
 #source /usr/share/nvm/init-nvm.sh
