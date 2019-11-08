@@ -49,6 +49,10 @@ set cmdheight=1
 " or 'The only match'
 set shortmess+=c
 
+" Clickable
+set mouse=a
+
+
 " ============================================================================ "
 " ===                           PLUGIN SETUP                               === "
 " ============================================================================ "
@@ -178,6 +182,9 @@ let g:NERDTreeShowHidden = 1
 
 " Remove bookmarks and help text from NERDTree
 let g:NERDTreeMinimalUI = 1
+
+" If a window opened already, go back to that.
+autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 
 " Custom icons for expandable/expanded directories
 let g:NERDTreeDirArrowExpandable = '⬏'
@@ -460,12 +467,16 @@ nmap <leader>z :JsDoc<CR>
 " Vim's default buffer
 vnoremap <leader>p "_dP
 
+" Refresh nerdtree
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+
 " ============================================================================ "
 " ===                                 MISC.                                === "
 " ============================================================================ "
 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 " === Search === "
 " ignore case when searching
