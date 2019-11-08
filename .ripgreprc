@@ -1,0 +1,5 @@
+--glob=!.git
+--glob=!node_modules
+--glob=!__pycache__
+--glob=!docker
+--glob=!Application
