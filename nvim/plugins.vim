@@ -104,7 +104,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+" Navigate features
+Plug 'kassio/neoterm'
+
+" vim start plugin
+Plug 'mhinz/vim-startify'
 
 " Initialize plugin system
 call plug#end()
-let g:coc_global_extensions = [ 'coc-json', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-yaml', 'coc-tslint-plugin', 'coc-angular', 'coc-yank', 'coc-xml', 'coc-highlight' ]

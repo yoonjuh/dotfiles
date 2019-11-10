@@ -20,10 +20,10 @@ ZSH_THEME=""
 
 # TMUX
 # Automatically start tmux
-ZSH_TMUX_AUTOSTART=true
+#ZSH_TMUX_AUTOSTART=true
 
 # Automatically connect to a previous session if it exists
-ZSH_TMUX_AUTOCONNECT=true
+#ZSH_TMUX_AUTOCONNECT=true
 
 # Enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -159,19 +159,19 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 
 # zsh; needs setopt re_match_pcre. You can, of course, adapt it to your own shell easily.
-tmuxkillf () {
-    local sessions
-    sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
-    local i
-    for i in "${(f@)sessions}"
-    do
-        [[ $i =~ '([^:]*):.*' ]] && {
-            echo "Killing $match[1]"
-            tmux kill-session -t "$match[1]"
-        }
-    done
-  }
-
+#tmuxkillf () {
+#    local sessions
+#    sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
+#    local i
+#    for i in "${(f@)sessions}"
+#    do
+#        [[ $i =~ '([^:]*):.*' ]] && {
+#            echo "Killing $match[1]"
+#            tmux kill-session -t "$match[1]"
+#        }
+#    done
+#  }
+#
 
 # System settings
 export GTK_IM_MODULE=fcitx

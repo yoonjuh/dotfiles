@@ -52,6 +52,13 @@ set shortmess+=c
 " Clickable
 set mouse=a
 
+" Split behaviors
+set splitbelow
+set splitright
+
+highlight ColorColumn ctermbg=236 guibg=#303030
+let &colorcolumn=join(range(100,999), ',')
+
 
 " ============================================================================ "
 " ===                           PLUGIN SETUP                               === "
@@ -72,7 +79,7 @@ call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git
 call denite#custom#var('grep', 'command', ['rg'])
 
 " Change default action.
-call denite#custom#kind('file', 'default_action', 'split')
+call denite#custom#kind('file', 'default_action', 'vsplit')
 
 " Custom options for ripgrep
 "   --vimgrep:  Show results with every match on it's own line
@@ -101,9 +108,9 @@ call denite#custom#map('insert,normal', "<C-h>", '<denite:do_action:>')
 
 
 " -u flag to unrestrict (see ag docs)
-"call denite#custom#var('file_rec', 'command',
-"\ ['ag', '--follow', '--nocolor', '--nogroup', '-u', '-g', ''])
-"map <C-P> :DeniteProjectDir -buffer-name=files -direction=top file/rec<CR>
+call denite#custom#var('file_rec', 'command',
+\ ['ag', '--follow', '--nocolor', '--nogroup', '-u', '-g', ''])
+map <C-P> :DeniteProjectDir -buffer-name=files -direction=top file/rec<CR>
 
 
 " Custom options for Denite
@@ -261,6 +268,9 @@ let g:used_javascript_libs = 'underscore,requirejs,chai,lodash'
 
 " === Signify === "
 let g:signify_sign_delete = '-'
+
+" COC plugins
+let g:coc_global_extensions = [ 'coc-json', 'coc-html', 'coc-css', 'coc-tsserver', 'coc-yaml', 'coc-tslint-plugin', 'coc-angular', 'coc-yank', 'coc-xml', 'coc-highlight' ]
 
 " ============================================================================ "
 " ===                                UI                                    === "
@@ -456,8 +466,11 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 map <leader>w <Plug>(easymotion-bd-w)
 
 " Allows you to save files you opened without write permissions via sudo
-"cmap w!! w !sudo tee %
+cmap w!! w !sudo tee %
 
+
+" Refresh nerdtree
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 " === vim-jsdoc shortcuts ==="
 " Generate jsdoc for function under cursor
 nmap <leader>z :JsDoc<CR>
@@ -467,8 +480,49 @@ nmap <leader>z :JsDoc<CR>
 " Vim's default buffer
 vnoremap <leader>p "_dP
 
-" Refresh nerdtree
-nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+if has('nvim')
+  tnoremap <silent> <leader>x <C-\><C-n>:IEx<CR>
+endif
+
+if has('nvim-0.4')
+  " set pum background visibility to 20 percent
+  set pumblend=20
+
+  " set file completion in command to use pum
+  set wildoptions=pum
+endif
+
+set inccommand=nosplit
+
+" Navigate neovim + neovim terminal emulator with alt+direction
+tnoremap <silent><C-h> <C-\><C-n><C-w>h
+tnoremap <silent><C-j> <C-\><C-n><C-w>j
+tnoremap <silent><C-k> <C-\><C-n><C-w>k
+tnoremap <silent><C-l> <C-\><C-n><C-w>l
+
+tnoremap <silent><M-h> <C-\><C-N><C-w>h
+tnoremap <silent><M-j> <C-\><C-N><C-w>j
+tnoremap <silent><M-k> <C-\><C-N><C-w>k
+tnoremap <silent><M-l> <C-\><C-N><C-w>l
+
+  " easily escape terminal
+tnoremap <leader><esc> <C-\><C-n><esc><cr>
+"tnoremap <C-o> <C-\><C-n><esc><cr>
+
+" quickly toggle term
+nnoremap <silent> <leader>o :vertical botright Ttoggle<cr><C-w>l
+nnoremap <silent> <leader>O :botright Ttoggle<cr><C-w>j
+nnoremap <silent> <leader><space> :vertical botright Ttoggle<cr><C-w>l
+
+" close terminal
+tnoremap <silent> <leader>o <C-\><C-n>:Ttoggle<cr>
+"tnoremap <silent> <leader><space> <C-\><C-n>:Ttoggle<cr>
+
+" Open files relative to current path:
+" nnoremap <leader>e :edit <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>S :split <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+
 
 " ============================================================================ "
 " ===                                 MISC.                                === "
@@ -505,4 +559,8 @@ set noswapfile
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
+
+
+
+
 
