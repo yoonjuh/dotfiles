@@ -38,7 +38,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'christoomey/vim-tmux-navigator'
 
 " Denite - Fuzzy finding, buffer management
-Plug 'Shougo/denite.nvim'
+" Plug 'Shougo/denite.nvim'
 
 " Snippet support
 Plug 'Shougo/neosnippet'
@@ -53,7 +53,7 @@ Plug 'terryma/vim-multiple-cursors'
 " For easy comment
 Plug 'scrooloose/nerdcommenter'
 
-" Do I need this? 
+" Do I need this?
 Plug 'terryma/vim-smooth-scroll'
 
 " Colorize brackets
@@ -109,6 +109,10 @@ Plug 'kassio/neoterm'
 
 " vim start plugin
 Plug 'mhinz/vim-startify'
+
+" fzf
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()

@@ -6,7 +6,9 @@ source ~/.config/nvim/plugins.vim
 " ============================================================================ "
 
 " Remap leader key to ,
-let g:mapleader=','
+" let g:mapleader=','
+let mapleader=','
+" let maplocalleader = ' '
 
 " Disable line numbers
 set nonumber
@@ -57,111 +59,70 @@ set splitbelow
 set splitright
 
 highlight ColorColumn ctermbg=236 guibg=#303030
-let &colorcolumn=join(range(100,999), ',')
+"let &colorcolumn=join(range(100,999), ',')
+
+set textwidth=100
+set nowrap                          " nowrap by default
+set list                            " show invisible characters
+set listchars=tab:»·,trail:·,nbsp:· "
+
+filetype plugin indent on
 
 
 " ============================================================================ "
 " ===                           PLUGIN SETUP                               === "
 " ============================================================================ "
 
-" Wrap in try/catch to avoid errors on initial install before plugin is available
-try
-" === Denite setup ==="
-" Use ripgrep for searching current directory for files
-" By default, ripgrep will respect rules in .gitignore
-"   --files: Print each file that would be searched (but don't search)
-"   --glob:  Include or exclues files for searching that match the given glob
-"            (aka ignore .git files)
-"
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+" FZF
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
-" Use ripgrep in place of "grep"
-call denite#custom#var('grep', 'command', ['rg'])
-
-" Change default action.
-call denite#custom#kind('file', 'default_action', 'vsplit')
-
-" Custom options for ripgrep
-"   --vimgrep:  Show results with every match on it's own line
-"   --hidden:   Search hidden directories and files
-"   --heading:  Show the file name above clusters of matches from each file
-"   --S:        Search case insensitively if the pattern is all lowercase
-call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
-
-" Recommended defaults for ripgrep via Denite docs
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-" Remove date from buffer list
-call denite#custom#var('buffer', 'date_format', '')
-
-" Search as type
-call denite#custom#option('_',
-	\ 'max_dynamic_update_candidates', 100000)
-
-" Open file commands
-call denite#custom#map('insert,normal', "<C-t>", '<denite:do_action:tabopen>')
-call denite#custom#map('insert,normal', "<C-v>", '<denite:do_action:v>')
-call denite#custom#map('insert,normal', "<C-h>", '<denite:do_action:>')
+" Terminal buffer options for fzf
+autocmd! FileType fzf
+autocmd  FileType fzf set noshowmode noruler nonu
 
 
-" -u flag to unrestrict (see ag docs)
-call denite#custom#var('file_rec', 'command',
-\ ['ag', '--follow', '--nocolor', '--nogroup', '-u', '-g', ''])
-map <C-P> :DeniteProjectDir -buffer-name=files -direction=top file/rec<CR>
+if has('nvim')
+  let $FZF_DEFAULT_OPTS .= ' --border --margin=0,2'
 
+  function! FloatingFZF()
+    let width = float2nr(&columns * 0.7)
+    let height = float2nr(&lines * 0.6)
+    let opts = { 'relative': 'editor',
+               \ 'row': (&lines - height) / 2,
+               \ 'col': (&columns - width) / 2,
+               \ 'width': width,
+               \ 'height': height }
 
-" Custom options for Denite
-"   auto_resize             - Auto resize the Denite window height automatically.
-"   prompt                  - Customize denite prompt
-"   direction               - Specify Denite window direction as directly below current pane
-"   winminheight            - Specify min height for Denite window
-"   highlight_mode_insert   - Specify h1-CursorLine in insert mode
-"   prompt_highlight        - Specify color of prompt
-"   highlight_matched_char  - Matched characters highlight
-"   highlight_matched_range - matched range highlight
-let s:denite_options = {'default' : {
-\ 'split': 'floating',
-\ 'start_filter': 1,
-\ 'auto_resize': 1,
-\ 'source_names': 'short',
-\ 'prompt': 'λ:',
-\ 'statusline': 0,
-\ 'highlight_matched_char': 'WildMenu',
-\ 'highlight_matched_range': 'Visual',
-\ 'highlight_window_background': 'Visual',
-\ 'highlight_filter_background': 'StatusLine',
-\ 'highlight_prompt': 'StatusLine',
-\ 'winrow': 1,
-\ 'vertical_preview': 1
-\ }}
+    let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    call setwinvar(win, '&winhighlight', 'NormalFloat:Normal')
+  endfunction
 
-" Loop through denite options and enable them
-function! s:profile(opts) abort
-  for l:fname in keys(a:opts)
-    for l:dopt in keys(a:opts[l:fname])
-      call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
-    endfor
-  endfor
-endfunction
+  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+endif
 
-call s:profile(s:denite_options)
-catch
-  echo 'Denite not installed. It should work after running :PlugInstall'
-endtry
+" Requires ripgrep, https://github.com/BurntSushi/ripgrep
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git/*" --type-not "lock"'
+
+" command! -bang -nargs=? -complete=dir Files
+  " \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse']}), <bang>0)
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', 'cat {}']}, <bang>0)
+
+command! -bang -nargs=? -complete=dir GFiles
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', 'cat {}']}, <bang>0)
 
 " Nerd Commentary
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 
-" === Coc.nvim === "
-" use <tab> for trigger completion and navigate to next complete item
+" Coc.nvim, use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  let col = col('.') - 1 return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
+
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -170,18 +131,6 @@ inoremap <silent><expr> <TAB>
 
 "Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" === NeoSnippet === "
-" Map <C-k> as shortcut to activate snippet if available
-"imap <C-k> <Plug>(neosnippet_expand_or_jump)
-"smap <C-k> <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k> <Plug>(neosnippet_expand_target)
-
-"" Load custom snippets from snippets folder
-"let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-
-"" Hide conceal markers
-"let g:neosnippet#enable_conceal_markers = 0
 
 " === NERDTree === "
 " Show hidden files/directories
@@ -313,7 +262,7 @@ set fillchars+=vert:.
 set noshowmode
 
 " Set floating window to be slightly transparent
-"set winbl=10
+set winbl=10
 
 " coc.nvim color changes
 hi! link CocErrorSign WarningMsg
@@ -363,13 +312,14 @@ endfunction
 " ============================================================================ "
 
 " vim-smooth-scroll setup
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll, 5, 2)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll, 5, 2)<CR>
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll, 5, 2)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll, 5, 2)<CR>
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
 
-" Create file on current directory
-map <Leader>ee :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+" Tryial for new keymap
+noremap <silent> <c-j> :call smooth_scroll#up(&scroll, 5, 2)<CR>
+noremap <silent> <c-k> :call smooth_scroll#down(&scroll, 5, 2)<CR>
 
 "Move selected lines vertically
 xnoremap K :m '<-2<CR>gv=gv
@@ -382,96 +332,27 @@ vnoremap Y myY`y
 "Save alias
 nnoremap <leader>s :w<cr>
 
-" === Denite shorcuts === "
-"   ;         - Browser currently open buffers
-"   <leader>t - Browse list of files in current directory
-"   <leader>g - Search current directory for occurences of given term and close window if no results
-"   <leader>j - Search current directory for occurences of word under cursor
-nmap ; :Denite buffer<CR>
-"nmap <leader>t :DeniteProjectDir file/rec<CR>
-nmap <C-P> :DeniteProjectDir file/rec<CR>
-nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
-nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
-
-" Define mappings while in 'filter' mode
-"   <C-o>         - Switch to normal mode inside of search results
-"   <Esc>         - Exit denite window in any mode
-"   <CR>          - Open currently selected file in any mode
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-  imap <silent><buffer> <C-o>
-  \ <Plug>(denite_filter_quit)
-  inoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
-  inoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-endfunction
-
-" Define mappings while in denite window
-"   <CR>        - Opens currently selected file
-"   q or <Esc>  - Quit Denite window
-"   d           - Delete currenly selected file
-"   p           - Preview currently selected file
-"   <C-o> or i  - Switch to insert mode inside of filter prompt
-" Define mappings
-
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <C-o>
-  \ denite#do_map('open_filter_buffer')
-endfunction
-
-" === Nerdtree shorcuts === "
-"  <leader>n - Toggle NERDTree on/off
-"  <leader>f - Opens current file location in NERDTree
+" Nerdtree shorcuts
 nmap <leader>q :NERDTreeToggle<CR>
-"nmap <leader>f :NERDTreeFind<CR>
 
-"   <Space> - PageDown
-"   -       - PageUp
-"noremap <leader><Space> <PageDown>
-"noremap - <PageUp>
-
-" === coc.nvim === "
+" Coc.nvim
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
 
 " === vim-better-whitespace === "
-"   <leader>y - Automatically remove trailing whitespace
 nmap <leader>y :StripWhitespace<CR>
 
 " === Search shorcuts === "
-"   <leader>h - Find and replace
-"   <leader>/ - Claer highlighted search terms while preserving history
 map <leader>h :%s///<left><left>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-" === Easy-motion shortcuts ==="
 "   <leader>w - Easy-motion highlights first word letters bi-directionally
 map <leader>w <Plug>(easymotion-bd-w)
 
 " Allows you to save files you opened without write permissions via sudo
 cmap w!! w !sudo tee %
 
-
-" Refresh nerdtree
-nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
-" === vim-jsdoc shortcuts ==="
 " Generate jsdoc for function under cursor
 nmap <leader>z :JsDoc<CR>
 
@@ -495,34 +376,40 @@ endif
 set inccommand=nosplit
 
 " Navigate neovim + neovim terminal emulator with alt+direction
-tnoremap <silent><C-h> <C-\><C-n><C-w>h
-tnoremap <silent><C-j> <C-\><C-n><C-w>j
-tnoremap <silent><C-k> <C-\><C-n><C-w>k
-tnoremap <silent><C-l> <C-\><C-n><C-w>l
+" tnoremap <silent><C-h> <C-\><C-n><C-w>h
+" tnoremap <silent><C-j> <C-\><C-n><C-w>j
+" tnoremap <silent><C-k> <C-\><C-n><C-w>k
+" tnoremap <silent><C-l> <C-\><C-n><C-w>l
 
-tnoremap <silent><M-h> <C-\><C-N><C-w>h
-tnoremap <silent><M-j> <C-\><C-N><C-w>j
-tnoremap <silent><M-k> <C-\><C-N><C-w>k
-tnoremap <silent><M-l> <C-\><C-N><C-w>l
+" tnoremap <silent><M-h> <C-\><C-N><C-w>h
+" tnoremap <silent><M-j> <C-\><C-N><C-w>j
+" tnoremap <silent><M-k> <C-\><C-N><C-w>k
+" tnoremap <silent><M-l> <C-\><C-N><C-w>l
 
   " easily escape terminal
 tnoremap <leader><esc> <C-\><C-n><esc><cr>
 "tnoremap <C-o> <C-\><C-n><esc><cr>
 
 " quickly toggle term
-nnoremap <silent> <leader>o :vertical botright Ttoggle<cr><C-w>l
-nnoremap <silent> <leader>O :botright Ttoggle<cr><C-w>j
 nnoremap <silent> <leader><space> :vertical botright Ttoggle<cr><C-w>l
+" nnoremap <silent> <leader>O :botright Ttoggle<cr><C-w>j
 
-" close terminal
-tnoremap <silent> <leader>o <C-\><C-n>:Ttoggle<cr>
-"tnoremap <silent> <leader><space> <C-\><C-n>:Ttoggle<cr>
-
-" Open files relative to current path:
-" nnoremap <leader>e :edit <C-R>=expand("%:p:h") . "/" <CR>
+" Create a file on current, vertical and horizontal pane
+nnoremap <leader>e :edit <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>S :split <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
+" FZF features
+nmap <leader>L :BLines!<CR>
+nmap <leader>l :Lines!<CR>
+nmap <leader>. :Buffers!<CR>
+nmap ?? :Rg!<CR>
+noremap <leader>T :Commits!<CR>
+
+" Find files with fzf
+nmap <C-p> :Files<CR>
+nmap <C-P> :GFiles!<CR>
+nmap <leader>P :Commands<CR
 
 " ============================================================================ "
 " ===                                 MISC.                                === "
@@ -530,7 +417,6 @@ nnoremap <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 
 " === Search === "
 " ignore case when searching
@@ -559,8 +445,5 @@ set noswapfile
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
-
-
-
 
 

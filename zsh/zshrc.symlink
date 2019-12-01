@@ -2,18 +2,16 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
 export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh
+export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:./node_modules/.bin
-
+#source $HOME/dotfiles/custom_script/start_working.sh
+# Python path
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
+
 
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME=""
@@ -26,7 +24,7 @@ ZSH_THEME=""
 #ZSH_TMUX_AUTOCONNECT=true
 
 # Enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -36,24 +34,11 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  node
-  brew
-  tmux
-  colored-man-pages
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-)
+function startWorking() {
+  export PATH=$PATH:$HOME/dotfiles/custom_script/bin
+  sh onelocal_custom_script_for_tmux.sh
+}
 
-# User configuration
-# Hide user@hostname if it's expected default user
-#DEFAULT_USER="ctay20"
-#prompt_context(){}
 
 # Setting rg as the default source for fzf
 export FZF_DEFAULT_COMMAND='rg --files'
@@ -61,64 +46,14 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # Apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+
+# FZF settings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPS="--extended --bind=ctrl-j:up,ctrl-k:down"
+export FZF_DEFAULT_COMMAND='fd --follow --exclude "node_modules"'
+
 # Set location of z installation
 . /usr/local/etc/profile.d/z.sh
-
-# Set vi-mode
-#bindkey -v
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 
 # Plugins
 plugins=(
@@ -133,46 +68,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
-# zsh; needs setopt re_match_pcre. You can, of course, adapt it to your own shell easily.
-#tmuxkillf () {
-#    local sessions
-#    sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
-#    local i
-#    for i in "${(f@)sessions}"
-#    do
-#        [[ $i =~ '([^:]*):.*' ]] && {
-#            echo "Killing $match[1]"
-#            tmux kill-session -t "$match[1]"
-#        }
-#    done
-#  }
-#
-
 # System settings
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -184,19 +79,12 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$HOME/last_semester/DB/instantclient_12_2:$PATH
 export EDITOR='nvim'
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
-export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 # prevent weird error(maximum function call stuff)
 zstyle ':vcs_info:*' enable git hg
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-
-# FZF settings
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPS="--extended"
-export FZF_DEFAULT_COMMAND='fd --follow --exclude "node_modules"'
 
 #Aliases
 alias v="nvim"
@@ -204,6 +92,7 @@ alias zshc="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias reload="source ~/.zshrc"
 alias settings="nvim ~/.config/nvim/init.vim"
+alias vplugins="nvim ~/dotfiles/nvim/plugins.vim"
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 alias ns="npm run start"
 alias yis="yarn && yarn start"
@@ -213,14 +102,30 @@ alias gd="git diff"
 alias ls="colorls -lA --sd"
 alias ll="ls -al"
 
-
-
 # Set spaceship as prompt
 autoload -U promptinit; promptinit
-prompt spaceship
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_NODE_SHOW=false
-SPACESHIP_GIT_STATUS_STASHED=''
+prompt pure
+
 #source /usr/share/nvm/init-nvm.sh
 
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  elif [[ $(nvm version) != $(nvm version default)  ]]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+g_npm_prefix=$(npm prefix -g)
+export PATH="$g_npm_prefix:$PATH"
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Colorls work around for caltalina
+eval "$(rbenv init -)"
