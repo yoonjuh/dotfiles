@@ -118,15 +118,15 @@ command! -bang -nargs=? -complete=dir GFiles
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 
-" Coc.nvim, use <tab> for trigger completion and navigate to next complete item
+" use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
-  let col = col('.') - 1 return !col || getline('.')[col - 1]  =~ '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
 
 "Close preview window when completion is done.
@@ -231,9 +231,9 @@ set termguicolors
 " Editor theme
 set background=dark
 try
-  colorscheme OceanicNext
-catch
   colorscheme onedark
+catch
+  colorscheme OceanicNext
 endtry
 
 " Vim airline theme

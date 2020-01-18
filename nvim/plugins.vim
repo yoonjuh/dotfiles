@@ -25,7 +25,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ntpeters/vim-better-whitespace'
 
 " auto-close plugin
-Plug 'rstacruz/vim-closer'
+"Plug 'rstacruz/vim-closer'
+"Plug "jiangmiao/auto-pairs"
 
 " Improved motion in Vim
 Plug 'easymotion/vim-easymotion'
