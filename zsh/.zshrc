@@ -4,13 +4,20 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Pure prompt
-fpath+=$HOME/.zsh/pure
+# FZF CONFIGS
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
+# LOAD NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# PURE PROMPT SETUP
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
-
-# THEME 
 ZSH_THEME=""
 
 # ZSH PLUGINS
@@ -52,18 +59,8 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-source $ZSH/oh-my-zsh.sh # RELOAD 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# RELOAD 
+source $ZSH/oh-my-zsh.sh 
 
 # Colorls ruby setup
 eval "$(rbenv init -)"
@@ -73,7 +70,8 @@ alias v="nvim"
 alias zshc="nvim ~/.zshrc"
 alias reload="source ~/.zshrc"
 alias settings="nvim ~/.config/nvim/init.vim"
-alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+# alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias code='open -b com.microsoft.VSCode "$@"'
 alias ga="git add"
 alias gc="git commit -m"
 alias gd="git diff"
