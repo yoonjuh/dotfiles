@@ -1,0 +1,6 @@
+{
+  // "tsserver.npm": "/Users/yoonjuh/.nvm/versions/node/v12.16.0/bin/npm",
+  "tslint.configFile": "/Users/yoonjuh/gataweb/tslint.json",
+  "tslint.autoFixOnSave": false,
+  "tslint.alwaysShowRuleFailuresAsWarnings": true
+}
