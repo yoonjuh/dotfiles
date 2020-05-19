@@ -1,7 +1,6 @@
 " Python3 Provider
 let g:python3_host_prog = expand("/usr/bin/python3")
 
-filetype plugin on
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line

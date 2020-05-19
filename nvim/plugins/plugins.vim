@@ -4,6 +4,7 @@ call plug#begin( '~/.config/nvim/plugged' )
   Plug 'sheerun/vim-polyglot'
   Plug 'leafgarland/typescript-vim'
   Plug 'ianks/vim-tsx'
+  Plug 'digitaltoad/vim-pug'
 
   "Auto Complition
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -17,7 +18,7 @@ call plug#begin( '~/.config/nvim/plugged' )
   Plug 'airblade/vim-rooter'
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'scrooloose/nerdcommenter'
+  Plug 'tpope/vim-commentary'
 
   " Themes
   Plug 'joshdick/onedark.vim'

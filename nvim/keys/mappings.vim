@@ -1,11 +1,10 @@
 
 let mapleader=" "
-nnoremap <Space> <Nop>
+nnoremap <space> <Nop>
+nnoremap q <Nop>
 
 "Save alias
-nnoremap <leader>s :w<cr>
-
-
+nnoremap <leader>w :w<cr>
 
 " TAB in general mode will move to text buffer
 nnoremap <silent> <TAB> :bnext<CR>
