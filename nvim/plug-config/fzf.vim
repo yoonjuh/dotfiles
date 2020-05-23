@@ -11,16 +11,13 @@ let g:fzf_action = {
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " FZF 
-nmap <C-f> :GFiles<CR>
-nnoremap <leader>f :Files<cr>
+"nmap <C-f> :GFiles<CR>
+nnoremap <leader>f :GFiles<cr>
+nnoremap <leader>F :Files<cr>
 nnoremap <leader>. :Buffers<cr>
 nnoremap <leader>l :BLines<cr>
 nnoremap <leader>L :Lines<cr>
-map <leader>b :Buffers<CR>
-nnoremap <leader>g :Rg<CR>
-nnoremap <leader>t :Tags<CR>
-nnoremap <leader>m :Marks<CR>
-
+nnoremap <silent>?? :Rg<cr>
 
 let g:fzf_tags_command = 'ctags -R'
 " Border color
@@ -28,7 +25,6 @@ let g:fzf_layout = { 'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8, 'yoff
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden"
-
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -74,7 +70,7 @@ command! -bang -nargs=* GGrep
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)}
 
-nnoremap <silent> <leader>e :call Fzf_dev()<CR>
+"nnoremap <silent> <leader>e :call Fzf_dev()<CR>
 
 " ripgrep
 if executable('rg')

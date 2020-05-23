@@ -1,20 +1,35 @@
+
 " Python3 Provider
 let g:python3_host_prog = expand("/usr/bin/python3")
 
+let mapleader=","
+
 syntax enable                           " Enables syntax highlighing
+filetype plugin indent on
+
+"SEARCH
+set ignorecase
+set smartcase
+set incsearch
+
+set colorcolumn=120
+set autoread                            " Automatically re-read file if a change was detected outside of vim
+set number                              " Enable line numbers
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
-set encoding=utf-8                      " The encoding displayed 
-set pumheight=10                        " Makes popup menu smaller
-set fileencoding=utf-8                  " The encoding written to file
 set ruler              		              " Show the cursor position all the time
+
+set pumheight=10                        " Makes popup menu smaller
+set encoding=utf-8                      " The encoding displayed 
+set fileencoding=utf-8                  " The encoding written to file
+scriptencoding utf-8
+
 set cmdheight=2                         " More space for displaying messages
-set iskeyword+=-                      	" treat dash separated words as a word text object"
 set mouse=a                             " Enable your mouse
+
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
-set t_Co=256                            " Support 256 colors
-set conceallevel=0                      " So that I can see `` in markdown files
+
 set tabstop=2                           " Insert 2 spaces for a tab
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
@@ -26,28 +41,19 @@ set number                              " Line numbers
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
 set showtabline=2                       " Always show tabs 
+
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
-set updatetime=300                      " Faster completion
-set timeoutlen=100                      " By default timeoutlen is 1000 ms
-set formatoptions-=cro                  " Stop newline continution of comments
+set noswapfile
+
+"set updatetime=300                      " Faster completion
+"set timeoutlen=100                      " By default timeoutlen is 1000 ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
-
-"Move selected lines vertically
-xnoremap K :m '<-2<CR>gv=gv
-xnoremap J :m '>+2<CR>gv=gv
-
-"Remember the cursor position after yanking
-vnoremap y myy`y
-vnoremap Y myY`y
-
-"Whenever I press <space>, search results go way
-nnoremap <silent> , :nohl<Bar>:echo<CR>
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
-" You can't stop me
-cmap w!! w !sudo tee %
-
-
+" Reload icons after init source
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif

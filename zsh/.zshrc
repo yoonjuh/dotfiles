@@ -8,11 +8,20 @@ export ZSH="$HOME/.oh-my-zsh"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+export GATA_ROOT="$HOME/gataweb"
+
+# NVIMRC PATH
+export NVIM_ROOT="$HOME/dotfiles/nvim"
+export NVIMRC="$NVIM_ROOT/init.vim"
 
 # LOAD NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#bindkey -v                    # VI-MODE
+#export KEYTIMEOUT=1           # Reduce the delay after you press <ESC>
 
 # PURE PROMPT SETUP
 fpath+=$HOME/.zsh/pure
@@ -20,17 +29,18 @@ autoload -U promptinit; promptinit
 prompt pure
 ZSH_THEME=""
 
+
 # ZSH PLUGINS
 plugins=(
   colored-man-pages
-  vi-mode
   tmux
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
 # Automatically start tmux if installed
-ZSH_TMUX_AUTOSTART=true
+#ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOCONNECT=false
 
 # Auto ls after cd 
 function chpwd() {
