@@ -240,7 +240,7 @@ schemes:
       white:   '#ffffff'
 
 custom_cursor_colors: true
-colors: *dracula
+colors: *material
 
 shell:
   program: /usr/local/bin/zsh

@@ -10,6 +10,7 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export GATA_ROOT="$HOME/gataweb"
+export TERM='screen-256color'
 
 # NVIMRC PATH
 export NVIM_ROOT="$HOME/dotfiles/nvim"
@@ -20,8 +21,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#bindkey -v                    # VI-MODE
-#export KEYTIMEOUT=1           # Reduce the delay after you press <ESC>
+export KEYTIMEOUT=5           # Reduce the delay after you press <ESC>
+
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+
+# Alacritty Completion and functions path
+fpath+=$HOME/.zsh/.zsh_functions
 
 # PURE PROMPT SETUP
 fpath+=$HOME/.zsh/pure
@@ -29,18 +36,37 @@ autoload -U promptinit; promptinit
 prompt pure
 ZSH_THEME=""
 
-
 # ZSH PLUGINS
 plugins=(
+  git
   colored-man-pages
-  tmux
+  vi-mode
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
-# Automatically start tmux if installed
-#ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=false
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+
+# Use beam shape cursor on startup.
+echo -ne '\e[5 q'
+
+# Use beam shape cursor for each new prompt.
+preexec() {
+   echo -ne '\e[5 q'
+}
 
 # Auto ls after cd 
 function chpwd() {
@@ -76,17 +102,13 @@ source $ZSH/oh-my-zsh.sh
 eval "$(rbenv init -)"
 
 # Aliases 
+alias alac="nvim ~/.config/alacritty/alacritty.yml"
 alias v="nvim"
 alias zshc="nvim ~/.zshrc"
 alias reload="source ~/.zshrc"
 alias settings="nvim ~/.config/nvim/init.vim"
 # alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 alias code='open -b com.microsoft.VSCode "$@"'
-alias ga="git add"
-alias gc="git commit -m"
-alias gd="git diff"
-alias gs="git status"
-alias gp="git push"
 alias lc="colorls -lA --sd"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
