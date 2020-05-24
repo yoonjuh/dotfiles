@@ -103,6 +103,10 @@ eval "$(rbenv init -)"
 
 # Aliases 
 alias alac="nvim ~/.config/alacritty/alacritty.yml"
+alias debug_alac="RUST_BACKTRACE=1 /Applications/Alacritty.app/Contents/MacOS/alacritty -vvv"
+
+alias tmux_clean="tmux kill-server"
+
 alias v="nvim"
 alias zshc="nvim ~/.zshrc"
 alias reload="source ~/.zshrc"
