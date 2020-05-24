@@ -1,0 +1,250 @@
+# Reference: https://github.com/tmcdonell/config-alacritty/blob/master/alacritty.yml
+
+window:
+  dimensions:
+    columns: 0
+    lines: 0
+
+  padding:
+    x: 0
+    y: 0
+
+  dynamic_padding: false
+
+  decorations: full
+
+  startup_mode: SimpleFullscreen
+
+background_opacity: 0.95
+
+draw_bold_text_with_bright_colors: true
+
+cursor:
+  # Cursor style
+  #
+  # Values for 'style':
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Block
+
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+  unfocused_hollow: true
+
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 3
+
+font:
+  normal: 
+    family: Cascadia Code
+    style: Regular
+
+  bold:
+    family: Cascadia Code
+    style: Regular
+
+  italic: 
+    family: Hack Nerd Font
+    style: Italic
+  
+  size: 16.5
+
+  use_thin_strokes: true
+
+schemes: 
+  dracula: &dracula
+    primary:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+    cursor:
+      text:   '0xf1c1c1'
+      cursor: '0xff2600'
+
+    normal:
+      black:   '#000000'
+      red:     '#ff5555'
+      green:   '#50fa7b'
+      yellow:  '#f1fa8c'
+      blue:    '#caa9fa'
+      magenta: '#ff79c6'
+      cyan:    '#8be9fd'
+      white:   '#bfbfbf'
+
+    bright:
+      black:   '#575b70'
+      red:     '#ff6e67'
+      green:   '#5af78e'
+      yellow:  '#f4f99d'
+      blue:    '#caa9fa'
+      magenta: '#ff92d0'
+      cyan:    '#9aedfe'
+      white:   '#e6e6e6'
+
+  one_dark: &one_dark
+    primary:
+      background: '0x1e2127'
+      foreground: '0xabb2bf'
+    cursor:
+      text:   '0xf1c1c1'
+      #cursor: '#ffc600'
+      cursor: '0xff2600'
+
+    normal:
+      black:   '0x1e2127'
+      red:     '0xe06c75'
+      green:   '0x98c379'
+      yellow:  '0xd19a66'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0xabb2bf'
+
+    bright:
+      black:   '0x5c6370'
+      red:     '0xe06c75'
+      green:   '0x98c379'
+      yellow:  '0xd19a66'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0xffffff'
+
+  tomorrow_night: &tomorrow_night
+    primary:
+      background: '#1d1f21'
+      foreground: '#c5c8c6'
+
+    cursor:
+      text: '#1d1f21'
+      cursor: '#ffffff'
+
+    normal:
+      black:   '#1d1f21'
+      red:     '#cc6666'
+      green:   '#b5bd68'
+      yellow:  '#e6c547'
+      blue:    '#81a2be'
+      magenta: '#b294bb'
+      cyan:    '#70c0ba'
+      white:   '#373b41'
+
+    bright:
+      black:   '#666666'
+      red:     '#ff3334'
+      green:   '#9ec400'
+      yellow:  '#f0c674'
+      blue:    '#81a2be'
+      magenta: '#b77ee0'
+      cyan:    '#54ced6'
+      white:   '#282a2e'
+
+  oceanic_next: &oceanic_next
+    primary:
+      background: '#1b2b34'
+      foreground: '#d8dee9'
+
+    cursor:
+      text: '#1b2b34'
+      cursor: '#ffffff'
+
+    normal:
+      black:   '#343d46'
+      red:     '#EC5f67'
+      green:   '#99C794'
+      yellow:  '#FAC863'
+      blue:    '#6699cc'
+      magenta: '#c594c5'
+      cyan:    '#5fb3b3'
+      white:   '#d8dee9'
+
+    bright:
+      black:   '#343d46'
+      red:     '#EC5f67'
+      green:   '#99C794'
+      yellow:  '#FAC863'
+      blue:    '#6699cc'
+      magenta: '#c594c5'
+      cyan:    '#5fb3b3'
+      white:   '#d8dee9'
+
+  breeze: &breeze
+    primary:
+      background: '#232627'
+      foreground: '#fcfcfc'
+
+      dim_foreground: '#eff0f1'
+      bright_foreground: '#ffffff'
+      dim_background: '#31363b'
+      bright_background: '#000000'
+
+    normal:
+      black: '#232627'
+      red: '#ed1515'
+      green: '#11d116'
+      yellow: '#f67400'
+      blue: '#1d99f3'
+      magenta: '#9b59b6'
+      cyan: '#1abc9c'
+      white: '#fcfcfc'
+
+    bright:
+      black: '#7f8c8d'
+      red: '#c0392b'
+      green: '#1cdc9a'
+      yellow: '#fdbc4b'
+      blue: '#3daee9'
+      magenta: '#8e44ad'
+      cyan: '#16a085'
+      white: '#ffffff'
+
+    dim:
+      black: '#31363b'
+      red: '#783228'
+      green: '#17a262'
+      yellow: '#b65619'
+      blue: '#1b668f'
+      magenta: '#614a73'
+      cyan: '#186c60'
+      white: '#63686d'
+   
+  material: &material   
+    primary:
+      background: '#1e282d'
+      foreground: '#c4c7d1'
+
+    normal:
+      black:   '#666666'
+      red:     '#eb606b'
+      green:   '#c3e88d'
+      yellow:  '#f7eb95'
+      blue:    '#80cbc4'
+      magenta: '#ff2f90'
+      cyan:    '#aeddff'
+      white:   '#ffffff'
+
+    bright:
+      black:   '#ff262b'
+      red:     '#eb606b'
+      green:   '#c3e88d'
+      yellow:  '#f7eb95'
+      blue:    '#7dc6bf'
+      magenta: '#6c71c4'
+      cyan:    '#35434d'
+      white:   '#ffffff'
+
+custom_cursor_colors: true
+colors: *dracula
+
+shell:
+  program: /usr/local/bin/zsh
+  args:
+    - --login
+

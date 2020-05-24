@@ -6,7 +6,6 @@ source $NVIM_ROOT/themes/airline.vim
 source $NVIM_ROOT/plug-config/coc.vim
 source $NVIM_ROOT/plug-config/fzf.vim
 source $NVIM_ROOT/plug-config/nerdtree.vim
-source $NVIM_ROOT/plug-config/vim-commentary.vim
 source $NVIM_ROOT/plug-config/neoterm.vim
 source $NVIM_ROOT/plug-config/signify.vim
 source $NVIM_ROOT/plug-config/scroll.vim
