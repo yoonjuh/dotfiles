@@ -13,7 +13,7 @@ window:
 
   decorations: full
 
-  startup_mode: SimpleFullscreen
+  startup_mode: Maximized
 
 background_opacity: 0.95
 
@@ -31,7 +31,6 @@ cursor:
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   unfocused_hollow: true
-
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -246,5 +245,7 @@ colors: *dracula
 shell:
   program: /usr/local/bin/zsh
   args:
-    - --login
+    - -l
+    - -c
+    - "tmux"
 
