@@ -59,7 +59,7 @@ font:
   use_thin_strokes: true
 
 schemes: 
-  dracula: &dracula
+  dracula: &material
     primary:
       background: '#282a36'
       foreground: '#f8f8f2'
@@ -218,6 +218,10 @@ schemes:
     primary:
       background: '#1e282d'
       foreground: '#c4c7d1'
+    cursor:
+      text:   '0xf1c1c1'
+      cursor: '#ffc600'
+      #cursor: '#0070ff'
 
     normal:
       black:   '#666666'
@@ -240,7 +244,7 @@ schemes:
       white:   '#ffffff'
 
 custom_cursor_colors: true
-colors: *material
+colors: *one_dark
 
 shell:
   program: /usr/local/bin/zsh

@@ -38,7 +38,6 @@ call plug#begin( '~/.config/nvim/plugged' )
   Plug 'airblade/vim-rooter'
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
-"  Plug 'tpope/vim-commentary'
   Plug 'preservim/nerdcommenter'
   Plug 'kassio/neoterm'
   Plug 'mhinz/vim-signify'
@@ -46,6 +45,7 @@ call plug#begin( '~/.config/nvim/plugged' )
   Plug 'terryma/vim-multiple-cursors'
   Plug 'lilydjwg/colorizer'
   Plug 'terryma/vim-smooth-scroll'
+  Plug 'christoomey/vim-tmux-navigator'
 
   " Themes
   Plug 'joshdick/onedark.vim'
