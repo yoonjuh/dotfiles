@@ -55,6 +55,7 @@ call plug#begin( '~/.config/nvim/plugged' )
   Plug 'mhartington/oceanic-next'
   Plug 'joshdick/onedark.vim'
   Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'drewtempelmeyer/palenight.vim'
 
   call plug#end()
 

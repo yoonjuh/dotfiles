@@ -41,7 +41,6 @@ set number                              " Line numbers
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
 set showtabline=2                       " Always show tabs 
-set formatoptions-=cro
 
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
@@ -54,7 +53,20 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
+" Workaround for prevent inserting newline comment
+autocmd FileType * set formatoptions-=cro
+
 " Reload icons after init source
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
+
+" True color support
+if ( has( "nvim" ) )
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+if( has( "termguicolors" ) )
+  set termguicolors
+endif
+
