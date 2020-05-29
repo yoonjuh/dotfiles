@@ -37,7 +37,8 @@ call plug#begin( '~/.config/nvim/plugged' )
   Plug 'jiangmiao/auto-pairs'
   Plug 'airblade/vim-rooter'
   Plug 'scrooloose/nerdtree'
-  Plug 'ryanoasis/vim-devicons'
+  " Temporalily Disable Due to Alacritty
+  "Plug 'ryanoasis/vim-devicons'
   Plug 'preservim/nerdcommenter'
   Plug 'kassio/neoterm'
   Plug 'mhinz/vim-signify'
