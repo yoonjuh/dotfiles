@@ -9,7 +9,6 @@ set -g default-terminal "screen-256color"
 
 # shorten command delay
 set -sg escape-time 0
-
 set-option -g status-interval 5
 set-option -g automatic-rename on
 set-option -g automatic-rename-format '#{b:pane_current_path}'
@@ -23,7 +22,6 @@ set -g message-style "fg=colour5,bg=default"
 
 # Set mode style (including history bar)
 set -g mode-style "fg=colour3"
-
 unbind C-b
 set -g prefix C-w
 
@@ -45,10 +43,8 @@ set -g mouse on
 bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
 bind -n WheelDownPane select-pane -t= \; send-keys -M
 bind -n C-WheelUpPane select-pane -t= \; copy-mode -e \; send-keys -M
-#
-# reload ~/.tmux.conf using PREFIX r
-bind r source-file ~/.tmux.conf \; display "tmux.conf source"
 
+bind r source-file ~/.tmux.conf \; display "tmux.conf source"
 bind | split-window -h -c '#{pane_current_path}' # normally prefix-%
 bind \\ split-window -h -c '#{pane_current_path}' # normally prefix-%
 bind - split-window -v -c '#{pane_current_path}' # normally prefix-"
@@ -63,29 +59,14 @@ bind -r L resize-pane -R 5
 setw -g monitor-activity on
 set -g visual-activity on
 
-run -b 'tmux bind -t vi-copy v begin-selection 2> /dev/null || true'
-run -b 'tmux bind -T copy-mode-vi v send -X begin-selection 2> /dev/null || true'
-run -b 'tmux bind -t vi-copy C-v rectangle-toggle 2> /dev/null || true'
-run -b 'tmux bind -T copy-mode-vi C-v send -X rectangle-toggle 2> /dev/null || true'
-run -b 'tmux bind -t vi-copy y copy-selection 2> /dev/null || true'
-run -b 'tmux bind -T copy-mode-vi y send -X copy-selection-and-cancel 2> /dev/null || true'
-run -b 'tmux bind -t vi-copy Escape cancel 2> /dev/null || true'
-run -b 'tmux bind -T copy-mode-vi Escape send -X cancel 2> /dev/null || true'
-run -b 'tmux bind -t vi-copy H start-of-line 2> /dev/null || true'
-run -b 'tmux bind -T copy-mode-vi H send -X start-of-line 2> /dev/null || true'
-run -b 'tmux bind -t vi-copy L end-of-line 2> /dev/null || true'
-run -b 'tmux bind -T copy-mode-vi L send -X end-of-line 2> /dev/null || true'
-
 # copy to macOS clipboard
 if -b 'command -v pbcopy > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | pbcopy"'
 if -b 'command -v reattach-to-user-namespace > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - || reattach-to-user-namespace pbcopy"'
-
 set-window-option -g mode-keys vi
 if-shell "test '\( #{$TMUX_VERSION_MAJOR} -eq 2 -a #{$TMUX_VERSION_MINOR} -ge 4 \)'" 'bind-key -Tcopy-mode-vi v send -X begin-selection; bind-key -Tcopy-mode-vi y send -X copy-selection-and-cancel'
 if-shell '\( #{$TMUX_VERSION_MAJOR} -eq 2 -a #{$TMUX_VERSION_MINOR} -lt 4\) -o #{$TMUX_VERSION_MAJOR} -le 1' 'bind-key -t vi-copy v begin-selection; bind-key -t vi-copy y copy-selection'
 
 # STATUS BAR 
-
 # Re-draw status window every 5 seconds
 set -g status-interval 5
 set -g status-bg '#343d46'
@@ -94,7 +75,6 @@ set -g status-left-length 40
 
 # Enable status bar
 set-option -g status on
-
 set-window-option -g window-status-current-style fg='#ffc600',bright
 
 # Right Status Bar: [Session Name][Date][Time]
@@ -117,7 +97,7 @@ if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
 bind-key -T copy-mode-vi 'C-h' select-pane -L
 bind-key -T copy-mode-vi 'C-j' select-pane -D
 bind-key -T copy-mode-vi 'C-k' select-pane -U
-bind-key-T copy-mode-vi 'C-l' select-pane -R
+bind-key -T copy-mode-vi 'C-l' select-pane -R
 bind-key -T copy-mode-vi 'C-\' select-pane -l 
 
 # Initialize TMUX plugin manager

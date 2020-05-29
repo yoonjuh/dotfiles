@@ -25,7 +25,6 @@ export KEYTIMEOUT=5           # Reduce the delay after you press <ESC>
 
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
 
 # Alacritty Completion and functions path
 fpath+=$HOME/.zsh/.zsh_functions
