@@ -63,6 +63,9 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
+"Vue
+let g:vue_disable_pre_processors = 1
+
 " Workaround for prevent inserting newline comment
 autocmd FileType * set formatoptions-=cro
 
