@@ -59,7 +59,7 @@ font:
   use_thin_strokes: true
 
 schemes: 
-  dracula: &material
+  dracula: &dracula
     primary:
       background: '#282a36'
       foreground: '#f8f8f2'
