@@ -246,6 +246,11 @@ schemes:
 custom_cursor_colors: true
 colors: *one_dark
 
+key_bindings:
+  - { key: Q,      mods: Command,   action: None             }
+  - { key: W,      mods: Command,   action: None             }
+  - { key: 36,     mods: Command,   action: ToggleFullscreen }
+
 shell:
   program: /usr/local/bin/zsh
   args:
