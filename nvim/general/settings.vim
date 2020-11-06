@@ -1,6 +1,6 @@
 
 " Python3 Provider
-let g:python3_host_prog = expand("/usr/bin/python3")
+let g:python3_host_prog = expand("/usr/local/bin/python3")
 
 let mapleader=","
 
@@ -61,6 +61,9 @@ set noswapfile
 set timeoutlen=300                      " By default timeoutlen is 1000 ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 
+"Render empty space and new line as $ 
+set list listchars=tab:>\ ,trail:-,eol:$
+
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
 "Vue
@@ -68,6 +71,9 @@ let g:vue_disable_pre_processors = 1
 
 " Workaround for prevent inserting newline comment
 autocmd FileType * set formatoptions-=cro
+
+" Add empty line at the end of file when writing a file like other vscode  
+autocmd BufWritePre * if (getline('$') !~ "^\s*$") | call append(line('$'), "") | endif
 
 " Reload icons after init source
 if exists('g:loaded_webdevicons')
