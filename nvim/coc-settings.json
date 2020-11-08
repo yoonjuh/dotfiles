@@ -1,6 +1,11 @@
 {
-  // "tsserver.npm": "/Users/yoonjuh/.nvm/versions/node/v12.16.0/bin/npm",
-  "tslint.configFile": "/Users/yoonjuh/gataweb/tslint.json",
+  "tslint.configFile": "/Users/yoonjuh/tslint.json",
   "tslint.autoFixOnSave": false,
-  "tslint.alwaysShowRuleFailuresAsWarnings": true
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
+  "eslint.enable": false,
+
+  // RUST
+  "rust-analyzer.cargo-watch.enable": false
+  //"rust-analyzer.serverPath": "/home//.cargo-target/release/rust-analyzer"
 }
+
