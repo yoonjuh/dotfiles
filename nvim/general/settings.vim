@@ -4,73 +4,131 @@ let g:python3_host_prog = expand("/usr/local/bin/python3")
 
 let mapleader=","
 
-syntax enable                           " Enables syntax highlighing
+" Note:
+" How to trace down which function is triggering the attribute update
+" :verbose set <user-attribute>?
+
+" Enables syntax highlighing
+syntax enable
+
 filetype plugin indent on
 
-set encoding=utf-8                      " The encoding displayed 
-set fileencoding=utf-8                  " The encoding written to file
+" The encoding displayed 
+set encoding=utf-8
+
+" The encoding written to file
+set fileencoding=utf-8
 scriptencoding utf-8
 
 "SEARCH
 set ignorecase
 set smartcase
 set incsearch
-set hlsearch                            " highlight matche
+
+" highlight matche
+set hlsearch                            
 
 set colorcolumn=120
-set autoread                            " Automatically re-read file if a change was detected outside of vim
-set number                              " Enable line numbers
-set hidden                              " Required to keep multiple buffers open multiple buffers
-set nowrap                              " Display long lines as just one line
-set ruler              		              " Show the cursor position all the time
+
+" Automatically re-read file if a change was detected outside of vim
+set autoread
+
+set number                              
+
+" Required to keep multiple buffers open multiple buffers
+set hidden
+
+" Display long lines as just one line
+set nowrap
+
+" Show the cursor position all the time
+set ruler              		              
 
 " FOLDING
 set foldenable
-set foldlevelstart=10                   " default folding level when buffer is opened
-set foldnestmax=10                      " maximum nested fold
-set foldmethod=syntax                   " fold based on indentation
 
-set pumheight=10                        " Makes popup menu smaller
-set cmdheight=2                         " More space for displaying messages
-set mouse=a                             " Enable your mouse
+" default folding level when buffer is opened
+set foldlevelstart=10
 
-set splitbelow                          " Horizontal splits will automatically be below
-set splitright                          " Vertical splits will automatically be to the right
+" maximum nested fold
+set foldnestmax=10
 
-set tabstop=2                           " Insert 2 spaces for a tab
-set shiftwidth=2                        " Change the number of space characters inserted for indentation
-set showtabline=2                       " Always show tabs 
-set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
-set expandtab                           " Converts tabs to spaces
-set smartindent                         " Makes indenting smart
-set autoindent
-set copyindent                          " copy indent from the previous line
-set autoindent                          " Good auto indent
+" fold based on indentation
+set foldmethod=syntax
 
-set laststatus=0                        " Always display the status line
-set number                              " Line numbers
-set cursorline                          " Enable highlighting of the current line
-set background=dark                     " tell vim what the background color looks like
+" Makes popup menu smaller
+set pumheight=10
 
-set noshowmode                          " We don't need to see things like -- INSERT -- anymore
-set nobackup                            " This is recommended by coc
-set nowritebackup                       " This is recommended by coc
+" More space for displaying messages
+set cmdheight=2
+
+" Enable your mouse
+set mouse=a
+
+" Horizontal splits will automatically be below
+set splitbelow
+
+" Vertical splits will automatically be to the right
+set splitright                          
+
+" Insert 2 spaces for a tab
+set tabstop=2
+
+" Change the number of space characters inserted for indentation
+set shiftwidth=2
+
+" Always show tabs 
+set showtabline=2
+
+" Makes tabbing smarter will realize you have 2 vs 4
+set smarttab
+
+" Converts tabs to spaces
+set expandtab
+
+" Makes indenting smart
+set smartindent
+
+" copy indent from the previous line
+set copyindent
+
+" Always display the status line
+set laststatus=0
+
+set number
+
+set cursorline
+
+" tell vim what the background color looks like
+set background=dark
+
+" We don't need to see things like -- INSERT -- anymore
+set noshowmode
+
+" This is recommended by coc
+set nobackup
+set nowritebackup
 set noswapfile
 
-"set updatetime=300                      " Faster completion
-set timeoutlen=300                      " By default timeoutlen is 1000 ms
-set clipboard=unnamedplus               " Copy paste between vim and everything else
+" By default timeoutlen is 1000 ms
+set timeoutlen=300
+
+" Copy paste between vim and everything else
+set clipboard=unnamedplus
 
 "Render empty space and new line as $ 
 set list listchars=tab:>\ ,trail:-,eol:$
 
-au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
-
 "Vue
 let g:vue_disable_pre_processors = 1
 
+" Auto source when writing to init.vm alternatively you can run :source $MYVIMRC
+autocmd! BufWritePost $MYVIMRC source %
+
 " Workaround for prevent inserting newline comment
 autocmd FileType * set formatoptions-=cro
+
+autocmd FileTYpe * setlocal indentkeys-=<:>
 
 " Add empty line at the end of file when writing a file like other vscode  
 autocmd BufWritePre * if (getline('$') !~ "^\s*$") | call append(line('$'), "") | endif
