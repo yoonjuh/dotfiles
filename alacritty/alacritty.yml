@@ -253,8 +253,8 @@ key_bindings:
 
 shell:
   program: /usr/local/bin/zsh
-  args:
-    - -l
-    - -c
-    - "tmux"
+  #args:
+    #- -l
+    #- -c
+    #- "tmux attach || tmux"
 

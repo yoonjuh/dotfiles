@@ -25,6 +25,7 @@ call plug#begin( '~/.config/nvim/plugged' )
   Plug 'digitaltoad/vim-pug'
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'mxw/vim-jsx'
+  "Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
   "Auto Complition
   Plug 'neoclide/coc.nvim', {'branch': 'release'}

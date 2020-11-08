@@ -16,10 +16,11 @@ export TERM='screen-256color'
 export NVIM_ROOT="$HOME/dotfiles/nvim"
 export NVIMRC="$NVIM_ROOT/init.vim"
 
-# LOAD NVM
+export LANG="en_US.UTF-8"
+
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export KEYTIMEOUT=5           # Reduce the delay after you press <ESC>
 
@@ -44,32 +45,9 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-
-# Use beam shape cursor on startup.
-echo -ne '\e[5 q'
-
-# Use beam shape cursor for each new prompt.
-preexec() {
-   echo -ne '\e[5 q'
-}
-
 # Auto ls after cd 
 function chpwd() {
-  colorls -lA --sd
+  exa -a -l 
 }
 
 # Read .nvmrc after change directory
@@ -87,7 +65,7 @@ load-nvmrc() {
       nvm use
     fi
   elif [ "$node_version" != "$(nvm version default)" ]; then
-    # echo "Reverting to nvm default version"
+     echo "Reverting to nvm default version"
     nvm use default
   fi
 }
@@ -96,9 +74,6 @@ load-nvmrc
 
 # RELOAD 
 source $ZSH/oh-my-zsh.sh 
-
-# Colorls ruby setup
-eval "$(rbenv init -)"
 
 # Aliases 
 alias alac="nvim ~/.config/alacritty/alacritty.yml"
@@ -110,8 +85,8 @@ alias v="nvim"
 alias zshc="nvim ~/.zshrc"
 alias reload="source ~/.zshrc"
 alias settings="nvim ~/.config/nvim/init.vim"
-# alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 alias code='open -b com.microsoft.VSCode "$@"'
-alias lc="colorls -lA --sd"
+alias ls="exa -a -l" 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

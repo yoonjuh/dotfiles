@@ -12,8 +12,8 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " FZF 
 "nmap <C-f> :GFiles<CR>
-nnoremap <leader>f :GFiles<cr>
-nnoremap <leader>F :Files<cr>
+"nnoremap <C-f> :GFiles<cr>
+nnoremap <C-p> :Files<cr>
 nnoremap <leader>. :Buffers<cr>
 nnoremap <leader>l :BLines<cr>
 nnoremap <leader>L :Lines<cr>
@@ -111,3 +111,4 @@ function! Fzf_dev()
         \ 'options': '-m ' . l:fzf_files_options,
         \ 'down':    '40%' })
 endfunction
+
