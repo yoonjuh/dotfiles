@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Reduce the delay after you press <ESC>
@@ -7,7 +7,7 @@ export KEYTIMEOUT=5
 # PLUGINS
 export ZSH_CUSTOM=$HOME/.zsh
 source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source $ZSH_CUSTOM/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+#source $ZSH_CUSTOM/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 zvm_after_init_commands+=('[ -f ~/.fzf ] && source ~/.fzf')
 
 HISTFILE=~/.histfile
@@ -28,6 +28,11 @@ ZSH_THEME=""
 function chpwd() {
   exa -a -l 
 }
+
+function open () {
+  xdg-open $* > /dev/null 2>&1
+}
+
 
 # Aliases 
 alias alac="nvim ~/.config/alacritty/alacritty.yml"

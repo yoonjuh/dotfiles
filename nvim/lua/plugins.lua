@@ -12,7 +12,10 @@ return packer.startup(function(use)
 
   -- LSP
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use {
+    'hrsh7th/nvim-cmp', -- Autocompletion plugin
+    config = function() require('config.cmp-nvim')end,
+  }
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -57,6 +60,12 @@ return packer.startup(function(use)
   use 'nvim-telescope/telescope-fzy-native.nvim'
 
   use {
+    "ahmedkhalf/project.nvim",
+    config = function() require("config.project-nvim") end
+  }
+
+  -- Comment
+  use {
     'numToStr/Comment.nvim',
     config = function() require('config.comment-nvim') end,
   }
@@ -67,6 +76,27 @@ return packer.startup(function(use)
   use {
     'windwp/nvim-autopairs',
     config = function() require('config.nvim-autopair') end,
+  }
+
+  -- Git
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function() require('config.gitsign-nvim') end,
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+  }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    config = function() require('config.lualine-nvim') end,
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+
+  use {
+    'akinsho/bufferline.nvim',
+    config = function() require('config.bufferline-nvim') end,
+    requires = 'kyazdani42/nvim-web-devicons'
   }
 
 end)

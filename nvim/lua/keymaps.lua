@@ -14,3 +14,16 @@ vim.cmd( [[
   vnoremap K :m '<-2<CR>gv=gv 
 ]] )
 
+-- Reselect visually selected lines after indent
+vim.cmd([[
+  vnoremap < <gv
+  vnoremap > >gv
+]])
+
+-- Maintain yank position
+-- http://ddrscott.github.io/blog/2016/yank-without-jank/
+vim.cmd([[
+  vnoremap Y myY`y
+  vnoremap y myy`y
+]])
+

@@ -16,4 +16,5 @@ keymap('n', '<leader>fo', "<cmd>lua require('telescope.builtin').find_files({ cw
 
 -- Load extentions
 telescope.load_extension('fzy_native')
+telescope.load_extension('projects')
 
