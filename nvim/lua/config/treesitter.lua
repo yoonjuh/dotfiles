@@ -17,7 +17,7 @@ if not treesitter_config then
 end
 
 treesitter_config.setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
   highlight = {
     enable = true,              -- false will disable the whole extension
     additional_vim_regex_highlighting = false,

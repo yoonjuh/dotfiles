@@ -40,7 +40,8 @@ return packer.startup(function(use)
   use 'marko-cerovac/material.nvim'
   use "projekt0n/github-nvim-theme"
   use "catppuccin/nvim"
-
+  use "lunarvim/Onedarker.nvim"
+  use "ellisonleao/gruvbox.nvim"
 
   use {
     'kyazdani42/nvim-tree.lua',
@@ -64,6 +65,8 @@ return packer.startup(function(use)
     config = function() require("config.project-nvim") end
   }
 
+  use "nvim-telescope/telescope-file-browser.nvim"
+
   -- Comment
   use {
     'numToStr/Comment.nvim',
@@ -86,6 +89,17 @@ return packer.startup(function(use)
       'nvim-lua/plenary.nvim'
     },
   }
+
+  -- GITGUB in NEOVIM
+  use {
+  'pwntester/octo.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim',
+    'kyazdani42/nvim-web-devicons',
+  },
+  config = function () require('config.octo-nvim') end
+}
 
   use {
     'nvim-lualine/lualine.nvim',

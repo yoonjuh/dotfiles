@@ -7,6 +7,7 @@ end
 
 vim.g.mapleader = " "
 vim.g.autoread = true
+vim.g.python3_host_prog = "/usr/bin/python"
 
 opt('b', 'expandtab', true)
 opt('b', 'shiftwidth', 2)

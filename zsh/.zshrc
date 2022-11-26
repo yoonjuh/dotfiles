@@ -6,7 +6,7 @@ export KEYTIMEOUT=5
 
 # PLUGINS
 export ZSH_CUSTOM=$HOME/.zsh
-source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh
 #source $ZSH_CUSTOM/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 zvm_after_init_commands+=('[ -f ~/.fzf ] && source ~/.fzf')
 
@@ -15,14 +15,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory
 setopt auto_cd
-
-
-# PURE PROMPT SETUP
-fpath+=$HOME/.zsh/themes/pure
-autoload -U promptinit; promptinit
-prompt pure
 ZSH_THEME=""
-
 
 # Auto ls after cd 
 function chpwd() {
@@ -44,6 +37,8 @@ alias reload="source ~/.zshrc"
 alias settings="nvim ~/.config/nvim/init.lua"
 # alias code='open -b com.microsoft.VSCode "$@"'
 alias ls="exa -a -l" 
+alias starship_conf="nvim ~/.config/starship.toml"
+alias wezconf="nvim ~/.config/wezterm/wezterm.lua"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -59,4 +54,4 @@ export GATA_ROOT="$HOME/gataweb"
 export TERM='screen-256color'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+eval "$(starship init zsh)"
