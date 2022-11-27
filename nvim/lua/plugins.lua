@@ -24,7 +24,16 @@ return packer.startup(function(use)
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-  use 'williamboman/nvim-lsp-installer'
+
+  -- use 'williamboman/nvim-lsp-installer'
+
+  -- Nvim Package manager
+  use {
+    "williamboman/mason.nvim",
+    requires = { "williamboman/mason-lspconfig.nvim" },
+    config = function() require('config.mason-nvim') end,
+  }
+
 
   -- Highlighting
   use {
@@ -32,6 +41,10 @@ return packer.startup(function(use)
     config = function() require('config.treesitter') end,
     run = ':TSUpdate',
   }
+
+  -- Language specifics 
+  use 'simrat39/rust-tools.nvim'
+
 
   -- THEMES
   use 'Mofiqul/vscode.nvim'
@@ -52,6 +65,8 @@ return packer.startup(function(use)
   }
 
   -- TELESCOPE
+  use 'cljoly/telescope-repo.nvim'
+
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} },

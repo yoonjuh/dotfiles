@@ -1,8 +1,6 @@
 -- https://github.com/ahmedkhalf/project.nvim
 
 require('project_nvim').setup({
-  -- Followings are defaults
-
   -- Manual mode doesn't automatically change your root directory, so you have
   -- the option to manually do so using `:ProjectRoot` command.
   manual_mode = false,
@@ -32,8 +30,15 @@ require('project_nvim').setup({
   -- directory.
   silent_chdir = true,
 
+  -- What scope to change the directory, valid options are
+  -- * global (default)
+  -- * tab
+  -- * win
+  scope_chdir = 'global',
+
   -- Path where project.nvim will store the project history for use in
   -- telescope
   datapath = vim.fn.stdpath("data"),
 })
+
 

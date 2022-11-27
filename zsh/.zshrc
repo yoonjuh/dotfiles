@@ -54,4 +54,10 @@ export GATA_ROOT="$HOME/gataweb"
 export TERM='screen-256color'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. "$HOME/.cargo/env"
+[[ -s "/home/edwinyoon/.gvm/scripts/gvm" ]] && source "/home/edwinyoon/.gvm/scripts/gvm"
+
 eval "$(starship init zsh)"
+
+export GOPATH=$HOME/go
