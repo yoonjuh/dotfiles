@@ -35,6 +35,7 @@ keymap('n', '<leader>fo', "<cmd>lua require('telescope.builtin').find_files({ cw
 keymap('n', '<leader>rl', "<cmd>lua require('telescope').extensions.repo.list{}<cr>", options)
 
 -- File Browser
+-- https://github.com/nvim-telescope/telescope-file-browser.nvim#mappings
 keymap('n', '<leader>p', "<cmd>lua require('telescope').extensions.file_browser.file_browser{}<CR>", options)
 
 -- Load extentions

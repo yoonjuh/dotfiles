@@ -6,9 +6,9 @@ end
 
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim' -- Package manager
-  use 'preservim/nerdcommenter'
+  -- use 'preservim/nerdcommenter'
   -- TODO: There is an issue with fzf terminal mode navigation that was cause by vim-tmux-navigator
-  use 'christoomey/vim-tmux-navigator'
+  -- use 'christoomey/vim-tmux-navigator'
 
   -- LSP
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
@@ -24,8 +24,6 @@ return packer.startup(function(use)
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-
-  -- use 'williamboman/nvim-lsp-installer'
 
   -- Nvim Package manager
   use {
@@ -46,22 +44,26 @@ return packer.startup(function(use)
   use 'simrat39/rust-tools.nvim'
 
 
-  -- THEMES
-  use 'Mofiqul/vscode.nvim'
-  use 'Mofiqul/dracula.nvim'
-  use 'ful1e5/onedark.nvim'
-  use 'marko-cerovac/material.nvim'
-  use "projekt0n/github-nvim-theme"
-  use "catppuccin/nvim"
-  use "lunarvim/Onedarker.nvim"
-  use "ellisonleao/gruvbox.nvim"
-
+  -- File Explorer
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     config = function() require('config.nvim-tree') end,
+  }
+
+  -- Terminal
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = function() require("config.toggleterm-nvim") end,
+  }
+
+  -- Comment
+  use {
+    'numToStr/Comment.nvim',
+    config = function() require('config.comment-nvim') end,
   }
 
   -- TELESCOPE
@@ -82,12 +84,6 @@ return packer.startup(function(use)
 
   use "nvim-telescope/telescope-file-browser.nvim"
 
-  -- Comment
-  use {
-    'numToStr/Comment.nvim',
-    config = function() require('config.comment-nvim') end,
-  }
-
   -- Better comment in TS
   use 'JoosepAlviste/nvim-ts-context-commentstring'
 
@@ -107,14 +103,25 @@ return packer.startup(function(use)
 
   -- GITGUB in NEOVIM
   use {
-  'pwntester/octo.nvim',
-  requires = {
-    'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope.nvim',
-    'kyazdani42/nvim-web-devicons',
-  },
-  config = function () require('config.octo-nvim') end
-}
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function () require('config.octo-nvim') end
+  }
+
+
+  -- THEMES
+  use 'Mofiqul/vscode.nvim'
+  use 'Mofiqul/dracula.nvim'
+  use 'ful1e5/onedark.nvim'
+  use 'marko-cerovac/material.nvim'
+  use "projekt0n/github-nvim-theme"
+  use "catppuccin/nvim"
+  use "lunarvim/Onedarker.nvim"
+  use "ellisonleao/gruvbox.nvim"
 
   use {
     'nvim-lualine/lualine.nvim',

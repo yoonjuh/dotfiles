@@ -1,5 +1,6 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin
 export PATH="$HOME/.cargo/bin:$PATH"
+export GOPATH=$HOME/go
 
 # Reduce the delay after you press <ESC>
 export KEYTIMEOUT=5
@@ -35,23 +36,21 @@ alias v="nvim"
 alias zshc="nvim ~/.zshrc"
 alias reload="source ~/.zshrc"
 alias settings="nvim ~/.config/nvim/init.lua"
-# alias code='open -b com.microsoft.VSCode "$@"'
 alias ls="exa -a -l" 
 alias starship_conf="nvim ~/.config/starship.toml"
 alias wezconf="nvim ~/.config/wezterm/wezterm.lua"
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # FZF CONFIGS
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
-export GATA_ROOT="$HOME/gataweb"
 export TERM='screen-256color'
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -60,4 +59,3 @@ export TERM='screen-256color'
 
 eval "$(starship init zsh)"
 
-export GOPATH=$HOME/go
