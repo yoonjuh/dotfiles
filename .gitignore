@@ -1,5 +1,6 @@
-/nvim/plugged
+/nvim/plugin/packer_compiled.lua
 /custom-scripts
 
 .DS_Store
 tags
+
