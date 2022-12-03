@@ -1,64 +1,6 @@
 -- https://wezfurlong.org/wezterm/index.html
 
 local wezterm = require "wezterm"
-local act = wezterm.action
-local key_maps = {
-  {
-    key = '|',
-    mods = 'ALT|SHIFT',
-    action = act.SplitHorizontal {
-      domain = 'CurrentPaneDomain'
-    },
-  },
-  {
-    key = '_',
-    mods = 'ALT|SHIFT',
-    action = act.SplitVertical {
-      domain = 'CurrentPaneDomain'
-    },
-  },
-  {
-    key = 'c',
-    mods = 'LEADER',
-    action = act.SpawnTab "CurrentPaneDomain"
-  },
-  {
-    key = 'C',
-    mods = 'LEADER',
-    action = act.SpawnTab "CurrentPaneDomain"
-  },
-  {
-    key = 'x',
-    mods = 'LEADER',
-    action = act {
-      CloseCurrentPane = {
-        confirm = true
-      }
-    }
-  },
-  {
-    key = 'L',
-    mods = 'CTRL',
-    action = wezterm.action.ShowDebugOverlay
-  },
-  -- Disable default tab navigation for nvim
-  { key = 'Tab', mods = 'CTRL', action = act.DisableDefaultAssignment },
-  { key = 'Tab', mods = 'SHIFT|CTRL', action = act.DisableDefaultAssignment },
-}
-
-for i = 1, 8 do
-  -- CTRL+ALT + number to activate that tab
-  table.insert(key_maps, {
-    key = tostring(i),
-    mods = 'CTRL|ALT',
-    action = act.ActivateTab(i - 1),
-  })
-  -- F1 through F8 to activate that tab
-  table.insert(key_maps, {
-    key = 'F' .. tostring(i),
-    action = act.ActivateTab(i - 1),
-  })
-end
 
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
@@ -101,6 +43,68 @@ wezterm.on(
   end
 )
 
+-- KEY MAPPING SECTION
+
+local act = wezterm.action
+local key_maps = {
+  { key = 'c', mods = 'LEADER', action = act.SpawnTab "CurrentPaneDomain" },
+  {
+    key = '|',
+    mods = 'ALT|SHIFT',
+    action = act.SplitHorizontal {
+      domain = 'CurrentPaneDomain'
+    },
+  },
+  {
+    key = '_',
+    mods = 'ALT|SHIFT',
+    action = act.SplitVertical {
+      domain = 'CurrentPaneDomain'
+    },
+  },
+  {
+    key = 'x',
+    mods = 'LEADER',
+    action = act {
+      CloseCurrentPane = {
+        confirm = true
+      }
+    }
+  },
+
+  -- Tmux like Pane navigation
+  { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection 'Left' },
+  { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
+  { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
+  { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
+
+  -- Debugging
+  { key = 'L', mods = 'CTRL', action = wezterm.action.ShowDebugOverlay },
+
+  -- Disable default tab navigation for nvim
+  { key = 'Tab', mods = 'CTRL', action = act.DisableDefaultAssignment },
+  { key = 'Tab', mods = 'SHIFT|CTRL', action = act.DisableDefaultAssignment },
+
+  -- Zen mode
+  { key = 'Z', mods = 'CTRL', action = wezterm.action.TogglePaneZoomState },
+}
+
+-- Window switching mapping
+for i = 1, 8 do
+  -- CTRL+ALT + number to activate that tab
+  table.insert(key_maps, {
+    key = tostring(i),
+    mods = 'CTRL|ALT',
+    action = act.ActivateTab(i - 1),
+  })
+  -- F1 through F8 to activate that tab
+  table.insert(key_maps, {
+    key = 'F' .. tostring(i),
+    action = act.ActivateTab(i - 1),
+  })
+end
+
+
 return {
   -- KEYS 
   leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1500 },
@@ -117,8 +121,11 @@ return {
     { family = "Cascadia Code" },
     { family = 'Operator Mono Lig Book', weight = 325, italic = true },
   },
+  -- Font size is used to determine zoom level
+  font_size = 13.5,
 
   -- Appearance
   hide_tab_bar_if_only_one_tab = true,
+  enable_scroll_bar = true,
 }
 
