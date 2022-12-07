@@ -1,5 +1,6 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH=$PATH:$(dirname $(go list -f '{{.Target}}' .))
 export GOPATH=$HOME/go
 
 # Reduce the delay after you press <ESC>

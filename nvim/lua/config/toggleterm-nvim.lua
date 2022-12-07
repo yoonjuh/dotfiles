@@ -10,10 +10,14 @@ require("toggleterm").setup({
     end
   end,
   open_mapping = [[<c-\>]],
+  -- open_mapping = [[<leader>t]],
 
   -- 'vertical' | 'horizontal' | 'tab' | 'float'
   direction = "horizontal",
-  persist_size = false,
+  shading_factor = '1',
+  shade_terminals = true,
+  start_in_insert = true,
+  --persist_size = false,
   float_opts = {
     -- The border key is *almost* the same as 'nvim_open_win'
     -- see :h nvim_open_win for details on borders however

@@ -35,6 +35,7 @@ local cmd = vim.cmd
 cmd [[
   syntax enable
   filetype plugin on
+  set hidden
 ]]
 
 -- Workaround for prevent inserting newline comment

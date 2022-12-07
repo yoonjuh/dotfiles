@@ -5,23 +5,26 @@ if not packer then
 end
 
 return packer.startup(function(use)
-  use 'wbthomason/packer.nvim' -- Package manager
-  -- use 'preservim/nerdcommenter'
-  -- TODO: There is an issue with fzf terminal mode navigation that was cause by vim-tmux-navigator
-  -- use 'christoomey/vim-tmux-navigator'
+   -- Package manager
+  use 'wbthomason/packer.nvim'
 
-  -- LSP
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  -- LSP: Collection of configurations for built-in LSP client
+  use 'neovim/nvim-lspconfig'
   use {
-    'hrsh7th/nvim-cmp', -- Autocompletion plugin
+    -- Autocompletion plugin
+    'hrsh7th/nvim-cmp',
     config = function() require('config.cmp-nvim')end,
   }
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+
+  -- LSP source for nvim-cmp
+  use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
-  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  -- Snippets source for nvim-cmp
+  use 'saadparwaiz1/cmp_luasnip'
+  -- Snippets plugin
+  use 'L3MON4D3/LuaSnip'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
 
@@ -31,7 +34,6 @@ return packer.startup(function(use)
     requires = { "williamboman/mason-lspconfig.nvim" },
     config = function() require('config.mason-nvim') end,
   }
-
 
   -- Highlighting
   use {
@@ -43,12 +45,12 @@ return packer.startup(function(use)
   -- Language specifics 
   use 'simrat39/rust-tools.nvim'
 
-
   -- File Explorer
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+       -- optional, for file icon
+      'kyazdani42/nvim-web-devicons',
     },
     config = function() require('config.nvim-tree') end,
   }
@@ -91,6 +93,9 @@ return packer.startup(function(use)
     'windwp/nvim-autopairs',
     config = function() require('config.nvim-autopair') end,
   }
+
+  --multi cursor
+  use "mg979/vim-visual-multi"
 
   -- Git
   use {
