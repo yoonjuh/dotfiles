@@ -27,6 +27,7 @@ keymap('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>
 keymap('n', '<leader>fb', "<cmd>lua require('telescope.builtin').buffers()<cr>", options)
 keymap('n', '<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>", options)
 keymap('n', '<leader>fo', "<cmd>lua require('telescope.builtin').find_files({ cwd='/home/edwin/onelocal'})<cr>", options)
+keymap('n', '<leader>co', "<cmd>lua require('telescope.builtin').colorscheme()<cr>", options)
 
 
 -- PLUGIN MAPPINGS

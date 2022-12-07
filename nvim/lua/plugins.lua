@@ -127,6 +127,7 @@ return packer.startup(function(use)
   use "catppuccin/nvim"
   use "lunarvim/Onedarker.nvim"
   use "ellisonleao/gruvbox.nvim"
+  use "EdenEast/nightfox.nvim"
 
   use {
     'nvim-lualine/lualine.nvim',

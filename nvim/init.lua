@@ -5,5 +5,5 @@ require('keymaps')
 require('plugins')
 require('lsp')
 require('options')
-require('themes.onedarker-nvim')
+require('themes.dracula-nvim')
 
