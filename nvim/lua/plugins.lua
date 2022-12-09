@@ -53,14 +53,20 @@ return packer.startup(function(use)
   use 'simrat39/rust-tools.nvim'
   use {
     'ray-x/go.nvim',
-    require = {
-      'mfussenegger/nvim-dap',
-      'rcarriga/nvim-dap-ui',
-      'theHamsta/nvim-dap-virtual-text',
-      'ray-x/guihua.lua'
-    },
+    require = 'ray-x/guihua.lua',
+    ft = { "go" },
     config = get_config('go-nvim'),
   }
+
+  use({
+    "mfussenegger/nvim-dap",
+    requires = {
+      "mfussenegger/nvim-dap-python",
+      "leoluz/nvim-dap-go",
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+  })
 
   -- File Explorer
   use {

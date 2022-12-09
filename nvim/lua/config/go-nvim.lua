@@ -4,24 +4,32 @@
 --local install_root_dir = vim.fn.stdpath.concat {'data', 'mason'}
 
 require 'go'.setup({
+  go = 'go',
   -- if set to 'gopls' will use golsp format
   goimport = 'gopls',
   -- if set to gopls will use golsp format
-  gofmt = 'gopls',
+  filestruct = 'gopls',
+  gofmt = "gofumpt",
   max_line_len = 120,
   tag_transform = false,
   test_dir = '',
+  test_template = '',
+  test_template_dir = '',
+  verbose = false,
   comment_placeholder = '   ',
   lsp_cfg = true,
    -- true: set default gofmt in gopls format to gofumpt
-  lsp_gofumpt = true,
+  lsp_gofumpt = false,
    -- use on_attach from go.nvim
-  lsp_on_attach = true,
+  lsp_on_attach = function() end,
   dap_debug = true,
 
   --gopls_cmd = {install_root_dir .. '/go/gopls'},
   fillstruct = 'gopls',
-  dap_debug_gui = true
+  dap_debug_gui = true,
+  luasnip = true,
+  gopls_cmd = nil,
+  gopls_remote_auto = true,
 })
 
 vim.cmd("autocmd FileType go nmap <Leader><Leader>l GoLint")
