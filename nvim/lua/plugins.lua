@@ -4,6 +4,10 @@ if not packer then
     return
 end
 
+local function get_config(name)
+  return string.format('require("config.%s")', name)
+end
+
 return packer.startup(function(use)
    -- Package manager
   use 'wbthomason/packer.nvim'
@@ -13,7 +17,7 @@ return packer.startup(function(use)
   use {
     -- Autocompletion plugin
     'hrsh7th/nvim-cmp',
-    config = function() require('config.cmp-nvim')end,
+    config = get_config("cmp-nvim"),
   }
 
   -- LSP source for nvim-cmp
@@ -31,19 +35,32 @@ return packer.startup(function(use)
   -- Nvim Package manager
   use {
     "williamboman/mason.nvim",
-    requires = { "williamboman/mason-lspconfig.nvim" },
-    config = function() require('config.mason-nvim') end,
+    requires = {
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim"
+    },
+    config = get_config("lsp.mason-nvim"),
   }
 
   -- Highlighting
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = function() require('config.treesitter') end,
+    config = get_config('treesitter'),
     run = ':TSUpdate',
   }
 
   -- Language specifics 
   use 'simrat39/rust-tools.nvim'
+  use {
+    'ray-x/go.nvim',
+    require = {
+      'mfussenegger/nvim-dap',
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
+      'ray-x/guihua.lua'
+    },
+    config = get_config('go-nvim'),
+  }
 
   -- File Explorer
   use {
@@ -52,20 +69,20 @@ return packer.startup(function(use)
        -- optional, for file icon
       'kyazdani42/nvim-web-devicons',
     },
-    config = function() require('config.nvim-tree') end,
+    config = get_config('nvim-tree'),
   }
 
   -- Terminal
   use {
     "akinsho/toggleterm.nvim",
     tag = '*',
-    config = function() require("config.toggleterm-nvim") end,
+    config = get_config("toggleterm-nvim"),
   }
 
   -- Comment
   use {
     'numToStr/Comment.nvim',
-    config = function() require('config.comment-nvim') end,
+    config = get_config('comment-nvim'),
   }
 
   -- TELESCOPE
@@ -74,14 +91,14 @@ return packer.startup(function(use)
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} },
-    config = function() require('config.telescope') end,
+    config = get_config('telescope'),
   }
 
   use 'nvim-telescope/telescope-fzy-native.nvim'
 
   use {
     "ahmedkhalf/project.nvim",
-    config = function() require("config.project-nvim") end
+    config = get_config("project-nvim"),
   }
 
   use "nvim-telescope/telescope-file-browser.nvim"
@@ -91,7 +108,7 @@ return packer.startup(function(use)
 
   use {
     'windwp/nvim-autopairs',
-    config = function() require('config.nvim-autopair') end,
+    config = get_config('nvim-autopair'),
   }
 
   --multi cursor
@@ -100,7 +117,7 @@ return packer.startup(function(use)
   -- Git
   use {
     'lewis6991/gitsigns.nvim',
-    config = function() require('config.gitsign-nvim') end,
+    config = get_config('gitsign-nvim'),
     requires = {
       'nvim-lua/plenary.nvim'
     },
@@ -114,7 +131,7 @@ return packer.startup(function(use)
       'nvim-telescope/telescope.nvim',
       'kyazdani42/nvim-web-devicons',
     },
-    config = function () require('config.octo-nvim') end
+    config =  get_config('octo-nvim'),
   }
 
 
@@ -131,13 +148,13 @@ return packer.startup(function(use)
 
   use {
     'nvim-lualine/lualine.nvim',
-    config = function() require('config.lualine-nvim') end,
+    config = get_config('lualine-nvim'),
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
   use {
     'akinsho/bufferline.nvim',
-    config = function() require('config.bufferline-nvim') end,
+    config = get_config('bufferline-nvim'),
     requires = 'kyazdani42/nvim-web-devicons'
   }
 

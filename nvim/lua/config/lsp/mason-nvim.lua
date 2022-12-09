@@ -12,27 +12,71 @@ require("mason").setup({
 
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "sumneko_lua",
-    "rust_analyzer",
-    "clangd",
+    "ansiblels",
+    "bashls",
     "cssls",
     "dockerls",
     "eslint",
-    "gopls",
-    "golangci_lint_ls",
     "graphql",
     "html",
     "jsonls",
-    "tsserver",
     "marksman",
     "pyright",
+    "rust_analyzer",
     "sqls",
+    "sumneko_lua",
     "taplo",
+    "terraformls",
+    "tsserver",
     "yamlls",
-    "lemminx",
     "zls"
   },
   automatic_installation = true,
+})
+
+require("mason-tool-installer").setup({
+  ensure_installed = {
+      -- LSP
+    "bash-language-server",
+    "dockerfile-language-server",
+    "json-lsp",
+    "marksman",
+    "typescript-language-server",
+    "texlab",
+    "lua-language-server",
+    "pyright",
+    "terraform-ls",
+    "yaml-language-server",
+    -- Formatter
+    "black",
+    "prettier",
+    "stylua",
+    -- Linter
+    "eslint_d",
+    "shellcheck",
+    "tflint",
+    "vale",
+    "yamllint",
+    -- DAP
+    "debugpy",
+  },
+  -- if set to true this will check each tool for updates. If updates
+  -- are available the tool will be updated. This setting does not
+  -- affect :MasonToolsUpdate or :MasonToolsInstall.
+  -- Default: false
+  auto_update = false,
+
+  -- automatically install / update on startup. If set to false nothing
+  -- will happen on startup. You can use :MasonToolsInstall or
+  -- :MasonToolsUpdate to install tools and check for updates.
+  -- Default: true
+  run_on_start = true,
+
+  -- set a delay (in ms) before the installation starts. This is only
+  -- effective if run_on_start is set to true.
+  -- e.g.: 5000 = 5 second delay, 10000 = 10 second delay, etc...
+  -- Default: 0
+  start_delay = 3000, -- 3 second delay
 })
 
 -- Mappings.
@@ -59,9 +103,12 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
+  vim.keymap.set(
+    'n',
+    '<space>wl',
+    function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
@@ -109,7 +156,7 @@ require("mason-lspconfig").setup_handlers {
         }
       }
     })
-  end
+  end,
 }
 
 vim.lsp.set_log_level("debug")
