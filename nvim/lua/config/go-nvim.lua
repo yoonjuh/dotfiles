@@ -17,7 +17,6 @@ require 'go'.setup({
   test_template_dir = '',
   verbose = false,
   comment_placeholder = '   ',
-  lsp_cfg = true,
    -- true: set default gofmt in gopls format to gofumpt
   lsp_gofumpt = false,
    -- use on_attach from go.nvim
@@ -30,6 +29,7 @@ require 'go'.setup({
   luasnip = true,
   gopls_cmd = nil,
   gopls_remote_auto = true,
+  lsp_cfg = true
 })
 
 vim.cmd("autocmd FileType go nmap <Leader><Leader>l GoLint")
