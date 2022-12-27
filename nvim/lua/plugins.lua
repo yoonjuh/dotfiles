@@ -1,7 +1,9 @@
 local packer = require("config.packer")
 
-if not packer then
-    return
+print(packer)
+if not packer_bootstrap then
+  print(packer_bootstrap)
+  return
 end
 
 local function get_config(name)
@@ -164,5 +166,8 @@ return packer.startup(function(use)
     requires = 'kyazdani42/nvim-web-devicons'
   }
 
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
 

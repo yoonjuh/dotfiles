@@ -1,5 +1,5 @@
-local packer = require("packer")
-if not packer then
+local packer_okay = pcall(require, "packer")
+if not packer_okay then
   print("Packer was not found")
 
   local fn = vim.fn
@@ -8,8 +8,12 @@ if not packer then
   if fn.empty(fn.glob(install_path)) > 0 then
     print("Installing packer")
 
-    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-    vim.cmd("packadd packer.nvim")
+    -- fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+    -- vim.cmd("packadd packer.nvim")
+
+    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
+
     packer = require("packer")
     if packer then
       print("Packer has been installed successfully!")
@@ -19,7 +23,24 @@ if not packer then
   end
 end
 
-packer.reset()
+-- local ensure_packer = function()
+--   local fn = vim.fn
+--   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+--   print("This is the install path "..install_path)
+--   if fn.empty(fn.glob(install_path)) > 0 then
+--     print("hit1")
+--     fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+--     vim.cmd [[packadd packer.nvim]]
+--     return true
+--   end
+--   return false
+-- end
+
+-- local packer_bootstrap = ensure_packer()
+-- print(packer_bootstrap)
+local packer = require("packer")
+
+-- packer.reset()
 
 packer.init({
   display = {

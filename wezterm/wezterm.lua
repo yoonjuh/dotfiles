@@ -117,8 +117,8 @@ return {
 
   -- FONTS
   font = wezterm.font_with_fallback {
-    { family = 'FiraCode' },
     { family = "Cascadia Code" },
+    { family = 'Fira Code' },
     { family = 'Operator Mono Lig Book', weight = 325, italic = true },
   },
   -- Font size is used to determine zoom level
