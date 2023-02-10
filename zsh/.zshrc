@@ -1,6 +1,6 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:/usr/bin/go"
+export PATH="$PATH:/usr/local/go/bin"
 export GOPATH=$HOME/go
 
 # Reduce the delay after you press <ESC>
@@ -8,7 +8,7 @@ export KEYTIMEOUT=5
 
 # PLUGINS
 export ZSH_CUSTOM=$HOME/.zsh
-source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh
+source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 #source $ZSH_CUSTOM/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 zvm_after_init_commands+=('[ -f ~/.fzf ] && source ~/.fzf')
 
