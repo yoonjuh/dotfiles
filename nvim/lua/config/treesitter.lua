@@ -1,3 +1,5 @@
+-- https://github.com/nvim-treesitter/nvim-treesitter
+
 local treesitter_parsers = require("nvim-treesitter.parsers").get_parser_configs()
 if not treesitter_parsers then
     return
@@ -17,7 +19,33 @@ if not treesitter_config then
 end
 
 treesitter_config.setup {
-  ensure_installed = "all",
+  ensure_installed = {
+    "bash",
+    "c",
+    "comment",
+    "css",
+    "dockerfile",
+    "go",
+    "gomod",
+    "gosum",
+    "gowork",
+    "graphql",
+    "git_rebase",
+    "hjson",
+    "javascript",
+    "lua",
+    "make",
+    "markdown",
+    "python",
+    "regex",
+    "rust",
+    "scss",
+    "terraform",
+    "toml",
+    "typescript",
+    "vim",
+    "yaml"
+  },
   highlight = {
     enable = true,              -- false will disable the whole extension
     additional_vim_regex_highlighting = false,
