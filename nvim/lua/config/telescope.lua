@@ -1,22 +1,24 @@
 -- https://github.com/nvim-telescope/telescope.nvim
 
-local dotfiles_dir = "~/dotfiles"
-
 local telescope = require('telescope')
-local telescopeConfig = require("telescope.config")
-
-local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-table.insert(vimgrep_arguments, "--hidden")
+local dotfiles_dir = "~/dotfiles"
 
 telescope.setup({
   extensions = {
     repo = {
-      fd_opts = { "--no-ignore-vcs" },
+      list = {
+        -- This is option to exclude files that listed in .gitignore 
+        fd_opts = { "--no-ignore-vcs" },
+        search_dirs = {
+          "~/dotfiles",
+          "~/projects",
+
+          -- This is where all the go projects are located
+          -- This might throw an error is GOPATH is not defiend
+          os.getenv("GOPATH") .. "/src"
+        },
+      },
     },
-    search_dirs = {
-      "~/dotfiles",
-      "~/projects"
-    }
   },
   pickers = {
     find_files = {
