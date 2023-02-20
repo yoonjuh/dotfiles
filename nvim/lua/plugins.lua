@@ -12,25 +12,14 @@ return packer.startup(function(use)
    -- Package manager
   use 'wbthomason/packer.nvim'
 
-  -- LSP: Collection of configurations for built-in LSP client
+  -- LSP
   use 'neovim/nvim-lspconfig'
-  use {
-    -- Autocompletion plugin
+
+  use { -- Autocompletion
     'hrsh7th/nvim-cmp',
+    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
     config = get_config("cmp-nvim"),
   }
-
-  -- LSP source for nvim-cmp
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  -- Snippets source for nvim-cmp
-  use 'saadparwaiz1/cmp_luasnip'
-  -- Snippets plugin
-  use 'L3MON4D3/LuaSnip'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
 
   -- Nvim Package manager
   use {
@@ -139,7 +128,6 @@ return packer.startup(function(use)
     },
     config =  get_config('octo-nvim'),
   }
-
 
   -- THEMES
   use 'Mofiqul/vscode.nvim'
