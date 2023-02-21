@@ -50,15 +50,22 @@ local function vsplit_preview()
     view.focus()
 end
 
-local config = {
+--vim.api.nvim_set_keymap("n", "<C-h>", ":NvimTreeToggle<cr>" ,{silent = true, noremap = true})
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+require'nvim-tree'.setup({
   view = {
     mappings = {
       custom_only = false,
       list = {
         { key = "l", action = "edit", action_cb = edit_or_open },
         { key = "L", action = "vsplit_preview", action_cb = vsplit_preview },
-        { key = "h", action = "close_node" },
-        { key = "H", action = "collapse_all", action_cb = collapse_all },
+        { key = "c", action = "close_node" },
+        { key = "C", action = "collapse_all", action_cb = collapse_all },
         { key = "u", action = "dir_up" },
       },
     },
@@ -75,16 +82,10 @@ local config = {
   filters = {
     dotfiles = true,
   },
-}
-
---vim.api.nvim_set_keymap("n", "<C-h>", ":NvimTreeToggle<cr>" ,{silent = true, noremap = true})
-
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
--- set termguicolors to enable highlight groups
-vim.opt.termguicolors = true
-
-require'nvim-tree'.setup(config)
+  git = {
+    ignore = false,
+  }
+})
 
 local keymap = vim.api.nvim_set_keymap
 keymap("n", "<leader>q", "<cmd>lua require('nvim-tree').toggle()<cr>", { noremap = true, silent = true } )
