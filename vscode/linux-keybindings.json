@@ -1,0 +1,412 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "alt+enter",
+        "command": "workbench.action.toggleFullScreen",
+        "when": "!isIOS"
+    },
+    {
+        "key": "alt+f",
+        "command": "actions.find",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "-actions.find",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "workbench.action.findInFiles"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "-workbench.action.findInFiles"
+    },
+    {
+        "key": "alt+a",
+        "command": "editor.action.selectAll"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-editor.action.selectAll"
+    },
+    {
+        "key": "alt+a",
+        "command": "list.selectAll",
+        "when": "listFocus && listSupportsMultiselect && !inputFocus"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-list.selectAll",
+        "when": "listFocus && listSupportsMultiselect && !inputFocus"
+    },
+    {
+        "key": "alt+a",
+        "command": "extension.vim_ctrl+a",
+        "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-extension.vim_ctrl+a",
+        "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl"
+    },
+    {
+        "key": "alt+z",
+        "command": "undo"
+    },
+    {
+        "key": "ctrl+z",
+        "command": "-undo"
+    },
+    {
+        "key": "alt+z",
+        "command": "extension.vim_ctrl+z",
+        "when": "editorTextFocus && vim.active && vim.use<C-z> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+z",
+        "command": "-extension.vim_ctrl+z",
+        "when": "editorTextFocus && vim.active && vim.use<C-z> && !inDebugRepl"
+    },
+    {
+        "key": "alt+x",
+        "command": "editor.action.clipboardCutAction"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "-editor.action.clipboardCutAction"
+    },
+    {
+        "key": "alt+x",
+        "command": "extension.vim_ctrl+x",
+        "when": "editorTextFocus && vim.active && vim.use<C-x> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "-extension.vim_ctrl+x",
+        "when": "editorTextFocus && vim.active && vim.use<C-x> && !inDebugRepl"
+    },
+    {
+        "key": "alt+x",
+        "command": "filesExplorer.cut",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "-filesExplorer.cut",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "alt+c",
+        "command": "editor.action.clipboardCopyAction"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-editor.action.clipboardCopyAction"
+    },
+    {
+        "key": "alt+c",
+        "command": "extension.vim_ctrl+c",
+        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-extension.vim_ctrl+c",
+        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
+    },
+    {
+        "key": "alt+c",
+        "command": "filesExplorer.copy",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-filesExplorer.copy",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+    },
+    {
+        "key": "alt+c",
+        "command": "keybindings.editor.copyKeybindingEntry",
+        "when": "inKeybindings && keybindingFocus && !whenFocus"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-keybindings.editor.copyKeybindingEntry",
+        "when": "inKeybindings && keybindingFocus && !whenFocus"
+    },
+    {
+        "key": "alt+c",
+        "command": "problems.action.copy",
+        "when": "problemsVisibility && !relatedInformationFocus && focusedView == 'workbench.panel.markers.view'"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-problems.action.copy",
+        "when": "problemsVisibility && !relatedInformationFocus && focusedView == 'workbench.panel.markers.view'"
+    },
+    {
+        "key": "alt+c",
+        "command": "remote.tunnel.copyAddressInline",
+        "when": "tunnelViewFocus && tunnelType == 'Detected' && tunnelViewMultiSelection == 'undefined' || tunnelViewFocus && tunnelType == 'Forwarded' && tunnelViewMultiSelection == 'undefined'"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-remote.tunnel.copyAddressInline",
+        "when": "tunnelViewFocus && tunnelType == 'Detected' && tunnelViewMultiSelection == 'undefined' || tunnelViewFocus && tunnelType == 'Forwarded' && tunnelViewMultiSelection == 'undefined'"
+    },
+    {
+        "key": "alt+c",
+        "command": "search.action.copyMatch",
+        "when": "fileMatchOrMatchFocus"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-search.action.copyMatch",
+        "when": "fileMatchOrMatchFocus"
+    },
+    {
+        "key": "alt+v",
+        "command": "editor.action.clipboardPasteAction"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "-editor.action.clipboardPasteAction"
+    },
+    {
+        "key": "alt+v",
+        "command": "extension.vim_ctrl+v",
+        "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "-extension.vim_ctrl+v",
+        "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl"
+    },
+    {
+        "key": "alt+v",
+        "command": "filesExplorer.paste",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "-filesExplorer.paste",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "alt+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "alt+p",
+        "command": "extension.vim_ctrl+p",
+        "when": "suggestWidgetVisible && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "suggestWidgetVisible && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "alt+p",
+        "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "shift+alt+p",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "shift+alt+p",
+        "command": "workbench.action.quickOpenNavigatePreviousInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "shift+alt+x",
+        "command": "workbench.view.extensions",
+        "when": "viewContainer.workbench.view.extensions.enabled"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "-workbench.view.extensions",
+        "when": "viewContainer.workbench.view.extensions.enabled"
+    },
+    {
+        "key": "alt+s",
+        "command": "workbench.action.files.save"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "-workbench.action.files.save"
+    },
+    {
+        "key": "alt+s",
+        "command": "extension.vim_ctrl+s",
+        "when": "editorTextFocus && vim.active && vim.use<C-s> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "-extension.vim_ctrl+s",
+        "when": "editorTextFocus && vim.active && vim.use<C-s> && !inDebugRepl"
+    },
+    {
+        "key": "alt+t",
+        "command": "workbench.action.showAllSymbols"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-workbench.action.showAllSymbols"
+    },
+    {
+        "key": "alt+t",
+        "command": "extension.vim_ctrl+t",
+        "when": "editorTextFocus && vim.active && vim.use<C-t> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-extension.vim_ctrl+t",
+        "when": "editorTextFocus && vim.active && vim.use<C-t> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "alt+d",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+w",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "alt+k alt+w",
+        "command": "workbench.action.closeAllEditors"
+    },
+    {
+        "key": "ctrl+k ctrl+w",
+        "command": "-workbench.action.closeAllEditors"
+    },
+    {
+        "key": "alt+k alt+t",
+        "command": "workbench.action.selectTheme"
+    },
+    {
+        "key": "ctrl+k ctrl+t",
+        "command": "-workbench.action.selectTheme"
+    },
+    {
+        "key": "alt+\\",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "-workbench.action.splitEditor"
+    },
+    {
+        "key": "alt+-",
+        "command": "workbench.action.splitEditorDown"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft",
+        "when": "vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight",
+        "when": "vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp",
+        "when": "vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown",
+        "when": "vim.mode != 'Insert'"
+    },
+    {
+        "key": "alt+/",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "-editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+/",
+        "command": "toggleExplainMode",
+        "when": "suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "-toggleExplainMode",
+        "when": "suggestWidgetVisible"
+    },
+    {
+        "key": "alt+/",
+        "command": "workbench.action.terminal.sendSequence",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "-workbench.action.terminal.sendSequence",
+        "when": "terminalFocus"
+    }
+]

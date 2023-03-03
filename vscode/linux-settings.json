@@ -1,0 +1,45 @@
+{
+    "workbench.colorTheme": "GitHub Dark",
+    "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace", 
+    "editor.fontSize": 16,
+    "terminal.integrated.fontSize": 16,
+    "vim.easymotion": false,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.insertModeKeyBindings": [
+        { "before": ["j", "j"], "after": ["<Esc>"] }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["<leader>", "d"], "after": ["d", "d"] },
+        { "before": ["<C-n>"], "commands": [":nohl"] },
+        { "before": ["K"], "commands": ["lineBreakInsert"], "silent": true },
+        { "before": [":"], "commands": ["workbench.action.showCommands"], "silent": true },
+        {
+            "before": ["<leader>", "m"],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": ["<leader>", "l"],
+            "commands": [
+                "bookmarks.list"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        { "before": [">"], "commands": ["editor.action.indentLines"] },
+        { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-p>": true,
+        "<C-f>": false,
+        "<C-w>": false
+    },
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": 1
+}

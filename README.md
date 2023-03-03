@@ -54,6 +54,12 @@ ln -s $HOME/dotfiles/starship.toml $HOME/.config/starship.toml
 # tmux 
 ln -s $HOME/dotfiles/tmux.conf.symlink $HOME/.config/.tmux.conf
 
+# vscode keybindings (Linux)
+ln -s $HOME/dotfiles/vscode/linux-keybindings.json $HOME/.config/Code/User/keybindings.json
+
+# vscode user settings (Linux)
+ln -s $HOME/dotfiles/vscode/linux-settings.json $HOME/.config/Code/User/settings.json
+
 ```
 
 ## Neovim plugin install 
