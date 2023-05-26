@@ -4,3 +4,5 @@
 .DS_Store
 tags
 
+# Tmxu log files 
+tmux-client-*
