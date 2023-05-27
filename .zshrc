@@ -1,7 +1,13 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/usr/bin/go"
+export PATH="$PATH:$HOME/.docker/bin"
+export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+#export GOPATH=$HOME/projects
 
 # Reduce the delay after you press <ESC>
 export KEYTIMEOUT=5
@@ -32,7 +38,8 @@ function open () {
 # Aliases 
 alias alac="nvim ~/.config/alacritty/alacritty.yml"
 alias debug_alac="RUST_BACKTRACE=1 /Applications/Alacritty.app/Contents/MacOS/alacritty -vvv"
-alias tmux_clean="tmux kill-server"
+alias tclean="tmux kill-server"
+alias tload="tmux source ~/.tmux.conf"
 alias v="nvim"
 alias zshc="nvim ~/.zshrc"
 alias reload="source ~/.zshrc"
@@ -59,4 +66,3 @@ export NVM_DIR="$HOME/.nvm"
 [[ -s "/home/edwinyoon/.gvm/scripts/gvm" ]] && source "/home/edwinyoon/.gvm/scripts/gvm"
 
 eval "$(starship init zsh)"
-

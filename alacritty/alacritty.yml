@@ -1,13 +1,10 @@
-# Reference: https://github.com/tmcdonell/config-alacritty/blob/master/alacritty.yml
+# Reference: https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
 window:
-  dimensions:
-    columns: 0
-    lines: 0
-
   padding:
-    x: 0
+    x: 5
     y: 0
+  opacity: 0.95
 
   dynamic_padding: false
 
@@ -15,18 +12,16 @@ window:
 
   startup_mode: Maximized
 
-background_opacity: 0.95
-
 draw_bold_text_with_bright_colors: true
 
 cursor:
-  # Cursor style
-  #
-  # Values for 'style':
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
-  style: Block
+  style: 
+    # Values for 'shape':
+    #   - ▇ Block
+    #   - _ Underline
+    #   - | Beam
+    shape: Block
+    blinking: Always
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -54,9 +49,7 @@ font:
     family: FantasqueSansMono Nerd Font
     style: Italic
   
-  size: 12.5
-
-  use_thin_strokes: true
+  size: 20
 
 schemes: 
   dracula: &dracula
@@ -249,12 +242,12 @@ colors: *dracula
 key_bindings:
   - { key: Q,      mods: Command,   action: None             }
   - { key: W,      mods: Command,   action: None             }
-  - { key: 36,     mods: Command,   action: ToggleFullscreen }
+  - { key: Return,     mods: Command,   action: ToggleFullscreen }
 
 shell:
-  program: /usr/bin/zsh
-  #args:
-    #- -l
-    #- -c
-    #- "tmux attach || tmux"
+  program: /usr/local/bin/zsh
+  # args:
+  #   - -l
+  #   - -c
+  #   - "tmux attach || tmux"
 
