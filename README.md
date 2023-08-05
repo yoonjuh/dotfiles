@@ -37,7 +37,7 @@ I am using these files by creating symlink for each of them. It might be differ 
 # Let's assume that the dotfiles folder is located in the home directory
 
 # zsh
-ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
+ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
 
 # wezterm
 ln -s $HOME/dotfiles/wezterm $HOME/.config/wezterm
@@ -52,7 +52,7 @@ ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
 ln -s $HOME/dotfiles/starship.toml $HOME/.config/starship.toml
 
 # tmux 
-ln -s $HOME/dotfiles/tmux.conf.symlink $HOME/.config/.tmux.conf
+ln -s $HOME/dotfiles/.tmux.conf $HOME/.config/.tmux.conf
 
 # vscode keybindings (Linux)
 ln -s $HOME/dotfiles/vscode/linux-keybindings.json $HOME/.config/Code/User/keybindings.json

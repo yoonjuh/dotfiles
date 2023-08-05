@@ -15,7 +15,7 @@ window:
 
   startup_mode: Maximized
 
-background_opacity: 0.95
+  opacity: 0.95
 
 draw_bold_text_with_bright_colors: true
 
@@ -43,20 +43,18 @@ scrolling:
 
 font:
   normal: 
-    family: FantasqueSansMono Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Regular
 
   bold:
-    family: FantasqueSansMono Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Regular
 
   italic: 
-    family: FantasqueSansMono Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Italic
   
-  size: 12.5
-
-  use_thin_strokes: true
+  size: 10
 
 schemes: 
   dracula: &dracula
@@ -247,14 +245,14 @@ custom_cursor_colors: true
 colors: *dracula
 
 key_bindings:
-  - { key: Q,      mods: Command,   action: None             }
-  - { key: W,      mods: Command,   action: None             }
-  - { key: 36,     mods: Command,   action: ToggleFullscreen }
+  - { key: Q,      mods: Control,   action: None             }
+  - { key: W,      mods: Control,   action: None             }
+  - { key: Return,     mods: Control,   action: ToggleFullscreen }
 
 shell:
   program: /usr/bin/zsh
-  #args:
-    #- -l
-    #- -c
-    #- "tmux attach || tmux"
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
 

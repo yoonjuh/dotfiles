@@ -10,7 +10,7 @@ export KEYTIMEOUT=5
 export ZSH_CUSTOM=$HOME/.zsh
 source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 #source $ZSH_CUSTOM/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-zvm_after_init_commands+=('[ -f ~/.fzf ] && source ~/.fzf')
+#zvm_after_init_commands+=('[ -f ~/.fzf ] && source ~/.fzf')
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -28,6 +28,11 @@ function open () {
   xdg-open $* > /dev/null 2>&1
 }
 
+# fzf keybainding setup on Fedora
+if [ -x "$(command -v fzf)"  ]
+then
+    source /usr/share/fzf/shell/key-bindings.zsh
+fi
 
 # Aliases 
 alias alac="nvim ~/.config/alacritty/alacritty.yml"
@@ -55,8 +60,8 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-. "$HOME/.cargo/env"
-[[ -s "/home/edwinyoon/.gvm/scripts/gvm" ]] && source "/home/edwinyoon/.gvm/scripts/gvm"
+#. "$HOME/.cargo/env"
+#[[ -s "/home/edwinyoon/.gvm/scripts/gvm" ]] && source "/home/edwinyoon/.gvm/scripts/gvm"
 
 eval "$(starship init zsh)"
 

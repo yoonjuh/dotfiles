@@ -41,5 +41,6 @@
         "<C-w>": false
     },
     "editor.minimap.enabled": false,
-    "window.zoomLevel": 1
+    "window.zoomLevel": -0.5,
+    "workbench.editor.enablePreviewFromQuickOpen": true
 }
