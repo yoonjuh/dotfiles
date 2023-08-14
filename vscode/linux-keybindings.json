@@ -78,11 +78,6 @@
         "command": "-editor.action.clipboardCutAction"
     },
     {
-        "key": "alt+x",
-        "command": "extension.vim_ctrl+x",
-        "when": "editorTextFocus && vim.active && vim.use<C-x> && !inDebugRepl"
-    },
-    {
         "key": "ctrl+x",
         "command": "-extension.vim_ctrl+x",
         "when": "editorTextFocus && vim.active && vim.use<C-x> && !inDebugRepl"
@@ -172,11 +167,6 @@
     {
         "key": "ctrl+v",
         "command": "-editor.action.clipboardPasteAction"
-    },
-    {
-        "key": "alt+v",
-        "command": "extension.vim_ctrl+v",
-        "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl"
     },
     {
         "key": "ctrl+v",

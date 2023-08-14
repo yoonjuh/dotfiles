@@ -38,9 +38,25 @@
         "<C-a>": false,
         "<C-p>": true,
         "<C-f>": false,
-        "<C-w>": false
+        "<C-w>": false,
+        "<C-x>": false,
+        "<C-v>": false
+
     },
     "editor.minimap.enabled": false,
     "window.zoomLevel": -0.5,
-    "workbench.editor.enablePreviewFromQuickOpen": true
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+
+    "[typescript][typescriptreact][javascript][javascriptreact][json]": {
+        "editor.codeActionsOnSave": {"source.fixAll.eslint": true},
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false, // required 
+        "editor.formatOnType": false, // required
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+        "editor.formatOnSaveMode": "file", // required to format on save
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 }
