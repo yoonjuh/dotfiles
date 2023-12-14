@@ -9,6 +9,11 @@ export KEYTIMEOUT=5
 # PLUGINS
 export ZSH_CUSTOM=$HOME/.zsh
 source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# This is a dependency of colored-man-pages
+source $ZSH_CUSTOM/ohmyzsh/lib/theme-and-appearance.zsh
+source $ZSH_CUSTOM/ohmyzsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh
+
 #source $ZSH_CUSTOM/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 #zvm_after_init_commands+=('[ -f ~/.fzf ] && source ~/.fzf')
 
@@ -51,7 +56,6 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
-export TERM='screen-256color'
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
