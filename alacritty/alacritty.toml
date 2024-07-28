@@ -1,0 +1,271 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#575b70"
+blue = "#caa9fa"
+cyan = "#9aedfe"
+green = "#5af78e"
+magenta = "#ff92d0"
+red = "#ff6e67"
+white = "#e6e6e6"
+yellow = "#f4f99d"
+
+[colors.cursor]
+cursor = "0xff2600"
+text = "0xf1c1c1"
+
+[colors.normal]
+black = "#000000"
+blue = "#caa9fa"
+cyan = "#8be9fd"
+green = "#50fa7b"
+magenta = "#ff79c6"
+red = "#ff5555"
+white = "#bfbfbf"
+yellow = "#f1fa8c"
+
+[colors.primary]
+background = "#282a36"
+foreground = "#f8f8f2"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 10
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "None"
+key = "Q"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "None"
+key = "W"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "Return"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Alt"
+
+# [schemes.breeze.bright]
+# black = "#7f8c8d"
+# blue = "#3daee9"
+# cyan = "#16a085"
+# green = "#1cdc9a"
+# magenta = "#8e44ad"
+# red = "#c0392b"
+# white = "#ffffff"
+# yellow = "#fdbc4b"
+#
+# [schemes.breeze.dim]
+# black = "#31363b"
+# blue = "#1b668f"
+# cyan = "#186c60"
+# green = "#17a262"
+# magenta = "#614a73"
+# red = "#783228"
+# white = "#63686d"
+# yellow = "#b65619"
+#
+# [schemes.breeze.normal]
+# black = "#232627"
+# blue = "#1d99f3"
+# cyan = "#1abc9c"
+# green = "#11d116"
+# magenta = "#9b59b6"
+# red = "#ed1515"
+# white = "#fcfcfc"
+# yellow = "#f67400"
+#
+# [schemes.breeze.primary]
+# background = "#232627"
+# bright_background = "#000000"
+# bright_foreground = "#ffffff"
+# dim_background = "#31363b"
+# dim_foreground = "#eff0f1"
+# foreground = "#fcfcfc"
+#
+# [schemes.dracula.bright]
+# black = "#575b70"
+# blue = "#caa9fa"
+# cyan = "#9aedfe"
+# green = "#5af78e"
+# magenta = "#ff92d0"
+# red = "#ff6e67"
+# white = "#e6e6e6"
+# yellow = "#f4f99d"
+#
+# [schemes.dracula.cursor]
+# cursor = "0xff2600"
+# text = "0xf1c1c1"
+#
+# [schemes.dracula.normal]
+# black = "#000000"
+# blue = "#caa9fa"
+# cyan = "#8be9fd"
+# green = "#50fa7b"
+# magenta = "#ff79c6"
+# red = "#ff5555"
+# white = "#bfbfbf"
+# yellow = "#f1fa8c"
+#
+# [schemes.dracula.primary]
+# background = "#282a36"
+# foreground = "#f8f8f2"
+#
+# [schemes.material.bright]
+# black = "#ff262b"
+# blue = "#7dc6bf"
+# cyan = "#35434d"
+# green = "#c3e88d"
+# magenta = "#6c71c4"
+# red = "#eb606b"
+# white = "#ffffff"
+# yellow = "#f7eb95"
+#
+# [schemes.material.cursor]
+# cursor = "#ffc600"
+# text = "0xf1c1c1"
+#
+# [schemes.material.normal]
+# black = "#666666"
+# blue = "#80cbc4"
+# cyan = "#aeddff"
+# green = "#c3e88d"
+# magenta = "#ff2f90"
+# red = "#eb606b"
+# white = "#ffffff"
+# yellow = "#f7eb95"
+#
+# [schemes.material.primary]
+# background = "#1e282d"
+# foreground = "#c4c7d1"
+#
+# [schemes.oceanic_next.bright]
+# black = "#343d46"
+# blue = "#6699cc"
+# cyan = "#5fb3b3"
+# green = "#99C794"
+# magenta = "#c594c5"
+# red = "#EC5f67"
+# white = "#d8dee9"
+# yellow = "#FAC863"
+#
+# [schemes.oceanic_next.cursor]
+# cursor = "#ffffff"
+# text = "#1b2b34"
+#
+# [schemes.oceanic_next.normal]
+# black = "#343d46"
+# blue = "#6699cc"
+# cyan = "#5fb3b3"
+# green = "#99C794"
+# magenta = "#c594c5"
+# red = "#EC5f67"
+# white = "#d8dee9"
+# yellow = "#FAC863"
+#
+# [schemes.oceanic_next.primary]
+# background = "#1b2b34"
+# foreground = "#d8dee9"
+#
+# [schemes.one_dark.bright]
+# black = "0x5c6370"
+# blue = "0x61afef"
+# cyan = "0x56b6c2"
+# green = "0x98c379"
+# magenta = "0xc678dd"
+# red = "0xe06c75"
+# white = "0xffffff"
+# yellow = "0xd19a66"
+#
+# [schemes.one_dark.cursor]
+# cursor = "0xff2600"
+# text = "0xf1c1c1"
+#
+# [schemes.one_dark.normal]
+# black = "0x1e2127"
+# blue = "0x61afef"
+# cyan = "0x56b6c2"
+# green = "0x98c379"
+# magenta = "0xc678dd"
+# red = "0xe06c75"
+# white = "0xabb2bf"
+# yellow = "0xd19a66"
+#
+# [schemes.one_dark.primary]
+# background = "0x1e2127"
+# foreground = "0xabb2bf"
+#
+# [schemes.tomorrow_night.bright]
+# black = "#666666"
+# blue = "#81a2be"
+# cyan = "#54ced6"
+# green = "#9ec400"
+# magenta = "#b77ee0"
+# red = "#ff3334"
+# white = "#282a2e"
+# yellow = "#f0c674"
+#
+# [schemes.tomorrow_night.cursor]
+# cursor = "#ffffff"
+# text = "#1d1f21"
+#
+# [schemes.tomorrow_night.normal]
+# black = "#1d1f21"
+# blue = "#81a2be"
+# cyan = "#70c0ba"
+# green = "#b5bd68"
+# magenta = "#b294bb"
+# red = "#cc6666"
+# white = "#373b41"
+# yellow = "#e6c547"
+#
+# [schemes.tomorrow_night.primary]
+# background = "#1d1f21"
+# foreground = "#c5c8c6"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[shell]
+program = "/usr/bin/zsh"
+
+[window]
+decorations = "full"
+dynamic_padding = false
+opacity = 1
+startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 0
+y = 0

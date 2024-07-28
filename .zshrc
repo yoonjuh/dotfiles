@@ -14,9 +14,6 @@ source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plu
 source $ZSH_CUSTOM/ohmyzsh/lib/theme-and-appearance.zsh
 source $ZSH_CUSTOM/ohmyzsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh
 
-#source $ZSH_CUSTOM/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-#zvm_after_init_commands+=('[ -f ~/.fzf ] && source ~/.fzf')
-
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -26,7 +23,7 @@ ZSH_THEME=""
 
 # Auto ls after cd 
 function chpwd() {
-  exa -a -l 
+  eza -a -l 
 }
 
 function open () {
@@ -40,14 +37,14 @@ then
 fi
 
 # Aliases 
-alias alac="nvim ~/.config/alacritty/alacritty.yml"
+alias alac="nvim ~/.config/alacritty/alacritty.toml"
 alias debug_alac="RUST_BACKTRACE=1 /Applications/Alacritty.app/Contents/MacOS/alacritty -vvv"
 alias tmux_clean="tmux kill-server"
 alias v="nvim"
 alias zshc="nvim ~/.zshrc"
 alias reload="source ~/.zshrc"
 alias settings="nvim ~/.config/nvim/init.lua"
-alias ls="exa -a -l" 
+alias ls="eza -a -l" 
 alias starship_conf="nvim ~/.config/starship.toml"
 alias wezconf="nvim ~/.config/wezterm/wezterm.lua"
 
@@ -64,8 +61,12 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#. "$HOME/.cargo/env"
-#[[ -s "/home/edwinyoon/.gvm/scripts/gvm" ]] && source "/home/edwinyoon/.gvm/scripts/gvm"
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
+# load starship
 eval "$(starship init zsh)"
-

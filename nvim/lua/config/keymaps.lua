@@ -9,6 +9,7 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
+-- Multiline adjusting
 vim.cmd([[
   vnoremap J :m '>+1<CR>gv=gv
   vnoremap K :m '<-2<CR>gv=gv 
@@ -20,3 +21,13 @@ vim.cmd([[
   vnoremap < <gv
   vnoremap > >gv
 ]])
+
+-- Remove lazygit keymaps
+keymap.del("n", "<leader>gg", opts)
+keymap.del("n", "<leader>gG", opts)
+keymap.del("n", "<leader>gf", opts)
+keymap.del("n", "<leader>gl", opts)
+keymap.del("n", "<leader>gL", opts)
+
+-- Add Neogit keymap
+keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Open Neogit", noremap = true, silent = true })

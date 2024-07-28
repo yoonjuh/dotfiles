@@ -248,6 +248,7 @@ key_bindings:
   - { key: Q, mods: Control, action: None }
   - { key: W, mods: Control, action: None }
   - { key: Return, mods: Control, action: ToggleFullscreen }
+  - { key: N, mods: Alt, action: SpawnNewInstance }
 
 env:
   TERM: xterm-256color
@@ -255,5 +256,5 @@ shell:
   program: /usr/bin/zsh
   # args:
   #   - -l
-  #   - -c
   #   - "tmux attach || tmux"
+  #   - -c

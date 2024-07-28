@@ -1,6 +1,6 @@
 {
-    "workbench.colorTheme": "GitHub Dark",
-    "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace", 
+    "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+    
     "editor.fontSize": 16,
     "terminal.integrated.fontSize": 16,
     "vim.easymotion": false,
@@ -44,11 +44,12 @@
 
     },
     "editor.minimap.enabled": false,
-    "window.zoomLevel": -0.5,
     "workbench.editor.enablePreviewFromQuickOpen": true,
 
     "[typescript][typescriptreact][javascript][javascriptreact][json]": {
-        "editor.codeActionsOnSave": {"source.fixAll.eslint": true},
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit"
+        },
         "editor.formatOnSave": true,
         "editor.formatOnPaste": false, // required 
         "editor.formatOnType": false, // required
@@ -59,4 +60,19 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.tabSize": 2
+    },
+    "window.menuBarVisibility": "toggle",
+    "go.toolsManagement.autoUpdate": true,
+    "window.zoomLevel": -0.5,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "workbench.colorTheme": "Gruvbox Material Dark"
+    // "workbench.editor.showTabs": "none"
 }
