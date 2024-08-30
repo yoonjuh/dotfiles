@@ -121,7 +121,7 @@ return {
 		{ family = "Operator Mono Lig Book", weight = 325, italic = true },
 	}),
 	-- Font size is used to determine zoom level
-	font_size = 13.5,
+	font_size = 12,
 
 	-- Appearance
 	hide_tab_bar_if_only_one_tab = true,
