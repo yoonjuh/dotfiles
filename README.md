@@ -1,37 +1,12 @@
-# Dev environment setup for personal use
+# Purpose
 
-This repository contains a set of configuration files that power up my day-to-day experience as a developer.
-The target languages for the neovim configuration are Javascript, Typescript, go and lua.
+This repository contains a set of configuration files that power up my workflows
 
-## Prerequisites for the configurations 
+## Get started
 
-This configuration requires a lot dependencies. Please make sure you install following packages on your system. 
-If you don't see the version number besides the name, it won't matter as long as you install the latest version of it.
-
-- git
-- zsh
-  - With the current config, it requires `fast-syntax-highlighting` to be installed in the `$HOME/.zsh/plugins`
-- starship prompt
-- python3
-- go
-- ripgrep
-- fd
-- bat
-- neovim ^0.8.*
-- treesitter (cli)
-- wezterm (or alacritty)
-  - In case you installed wezterm, installing wezterm cli would be helpful to use this terminal
-- tmux 
-  - alacritty does not support multiplexing features so you might need this for it
-- packer 
-  - plugin manager for neovim
-- cargo 
-  - This might not be required but it will be helpful to install other packages that are written in Rust
-
-## Configuration placements on your system
-
-I am using these files by creating symlink for each of them. It might be differ based on your OS but following places generally works for Linux and MacOS.
-
+After cloning this repo, you may want to create following symlinks in your
+system. That way, when you execute these tools, they'll pick up the
+configuration automatically.
 
 ```sh
 # Let's assume that the dotfiles folder is located in the home directory
@@ -45,13 +20,10 @@ ln -s $HOME/dotfiles/wezterm $HOME/.config/wezterm
 # alacritty
 ln -s $HOME/dotfiles/alacritty $HOME/.config/alacritty
 
-# neovim
-ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
-
 # starship
 ln -s $HOME/dotfiles/starship.toml $HOME/.config/starship.toml
 
-# tmux 
+# tmux
 ln -s $HOME/dotfiles/.tmux.conf $HOME/.config/.tmux.conf
 
 # vscode keybindings (Linux)
@@ -61,17 +33,3 @@ ln -s $HOME/dotfiles/vscode/linux-keybindings.json $HOME/.config/Code/User/keybi
 ln -s $HOME/dotfiles/vscode/linux-settings.json $HOME/.config/Code/User/settings.json
 
 ```
-
-## Neovim plugin install 
-
-Once you installed neovim, please ensure there is no major issue on the `:checkhealth` command in your neovim session. 
-If it complains, please install the required packages. But If you installed the packages listed above, you should be good to go!
-
-
-As a next step, you can execute `:PackerInstall` in a neovim session. This will install all the neovim plugins. 
-Then, next time when you open up a nvim session, it will start installing language servers.
-
-## Note
-
-This configuratinos are pretty stable I think, but there are lots of room for improvements.
-
