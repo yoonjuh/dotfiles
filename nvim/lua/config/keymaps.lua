@@ -31,3 +31,11 @@ keymap.del("n", "<leader>gL", opts)
 
 -- Add Neogit keymap
 keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Open Neogit", noremap = true, silent = true })
+
+-- TMUX navigation setup
+keymap.set("n", "<C-h>", ":NvimTmuxNavigateLeft<Return>", opts)
+keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<Return>", opts)
+keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<Return>", opts)
+keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<Return>", opts)
+keymap.set("n", "<C-\\>", ":NvimTmuxNavigateLastActive<Return>", opts)
+keymap.set("n", "<C-Space>", ":NvimTmuxNavigateNext<Return>", opts)
